@@ -1,80 +1,60 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 
 <html>
-	<head>
-		<title>ZACPEELYATES</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+  <head>
+    <meta charset="UTF-8">
 
-		<!-- Scripts -->
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/jquery.scrollex.min.js"></script>
-		<script src="assets/js/browser.min.js"></script>
-		<script src="assets/js/breakpoints.min.js"></script>
-		<script src="assets/js/util.js"></script>
-		<script src="assets/js/main.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>zacpeelyates</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+  <header>
+    <h1>zacpeelyates</h1>
+  </header>
 
-				<!-- Banner -->
-					<section id="banner">
-						<div class="inner">
-							<h2 style="text-align: center;">Zac Peel-Yates</h2>
-								<h1 style="text-align: center;">
-								<code><a href="https://github.com/zacpeelyates">GITHUB</a> | <a href="https://linkedin.com/in/zac-peel-yates">LINKEDIN</a> | <a href="https://www.youtube.com/channel/UCnDtJfer99zse7ZXNmuFlCw">YOUTUBE</a></code>
-								<p style="text-align: left; margin-bottom: 0%;"> <br>Game Engine Programmer based in Bristol, England. Competitive about games; whether playing or developing.</p>
-							</div>								
+  <div class="backgroundtext">
+    </div>
 
+    <div class="hcontainer">
+        <h1 class="selectable" style="--hover-color : #6cc64480;"><a href = "https://github.com/zacpeelyates"                       target="_blank">github</a></h1> 
+        <h1 class="selectable" style="--hover-color : #ff000080;"><a href = "https://youtube.com/channel/UCnDtJfer99zse7ZXNmuFlCw"  target="_blank">youtube</a></h1> 
+        <h1 class="selectable" style="--hover-color : #0a66c280;"><a href = "https://linkedin.com/in/zac-peel-yates/"               target="_blank">linkedin</a></h1> 
+        <h1 class="selectable" style="--hover-color : #1da1f280;"><a href = "https://twitter.com/zacpeelyates"                      target="_blank">twitter</a></h1> 
+    </div>
+  <body>
+    <main>
+      <div class="container">
+        <div class="box">
+          <a href = "https://github.com/BlueBaldwin/Patchwork-Wars/blob/main/Assets/Scripts/Player/Car/Car.cs" target = "_blank">
+          <video src="videos/car.mp4" loop autoplay muted class="video"></video>
+          <h2>Vehicle Physics</h2>
+          </a>
+        </div>
+        <div class="box">
+          <a href = "https://github.com/zacpeelyates/unityrollback" target = "_blank">
+          <video src="videos/rollback.webm" loop autoplay muted class="video"></video>
+          <h2>Rollback Netcode</h2>
+          </a>
+        </div>
+        <div class="box">
+          <a href = "https://github.com/zacpeelyates/unrealmechanics/blob/main/Source/UE4Proj/PortalManager.cpp" target="_blank">
+          <video src="videos/portal.mp4" loop autoplay muted class="video"></video>
+          <h2>Unreal Portals</h2>
+        </div>
+        <div class="box">
+          <a href = "https://github.com/zacpeelyates/unrealmechanics/blob/main/Source/UE4Proj/PortalManager.cpp" target="_blank">
+          <video src="videos/shader.mp4" loop autoplay muted class="video"></video>
+          <h2>Shader Diorama</h2>
+          </a>
+        </div>
+      </div>
+    </main>
 
-				<!-- Wrapper -->
-					<section id="wrapper" style="margin-bottom: 0%;">				
-						<!-- Four -->
-							<section id="four" class="wrapper alt style1">
-								<div class="inner">
-									<h2 class="major" style="margin-top: -15%;">projects</h2>
-									<p>Here's a sample of my work, click section headers for more information.
-										<section class="features" style="margin-top: -5%;">
-
-											<article>
-											 <video src="videos/kurat.webm" loop autoplay muted class="video"></video>
-												<h3><a href="https://www.kurat.co.uk/"  class="major">Gameplay & UI Programmer: One Word Studios</a></h3>
-												<p>Developer on upcoming project 'Kurat.' Showcased at Insomnia 68 & COMX '22. Designed and implemented menu system and intro scene for demo. Currently working as a Network Programmer.</p>
-											</article>
-
-											<article>
-												<video class="video" loop autoplay muted src="videos/network.webm"></video>
-												<h3><a href="https://github.com/zacpeelyates/unityrollback"class="major">Unity Networking Demo</a></h3>
-												<p>Custom multi-threaded implementation of Rollback Netcode, written in C#. Client-side prediction and reconcilliation techniques allow deterministic gameplay simulation on each client in a peer-to-peer context.</p>
-											</article>
-
-											<article>
-												<video class="video" loop autoplay muted src="videos/portal.webm"></video>
-												<h3><a href="https://github.com/zacpeelyates/unrealmechanics" class="major">Unreal Mechanics Showcase: Portals</a></h3>
-												<p>Test map with some mechanics I've been playing around with. Seamless portal effect in UE4. Written purely in Unreal C++ with no additional libraries or packages.</p>
-											</article>
-
-										<article>
-											<video class="video" loop autoplay muted src="videos/boid.webm"></video>
-											<h3><a href="https://github.com/zacpeelyates/boidengine" class="major">C++ BOID ENGINE</a></h3>
-											<p>Entity-Component System based Game Engine built from the ground up in C++ using OpenGL. Demo project implements and expands upon Craig Reynolds' boids algorithm.</p>
-										</article>
-
-									</section>
-
-									<div class="inner" style="margin-top: -10%;">
-										<ul class="copyright" style="white-space: nowrap;">
-											<p>&copy; Me, I guess? All rights reserved. Design: <a href="http://html5up.net">HTML5UP</p>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</section>													
-					</section>
-				</section>		
-	</body>
+        <p>zacpeelyates@gmail.com</p>
+  </body>
 </html>
