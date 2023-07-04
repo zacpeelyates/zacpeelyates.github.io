@@ -188,12 +188,13 @@
           display: flex;
           max-width: 50%;
           margin: 0 auto;
-          justify-content: center;
-          margin-top: 125%;
+          justify-content: flex-start;
+          margin-top: 1250px;
     
         }
         
         .box {
+          margin-top: 0px;
           display: inline-flex;
           flex-basis: 100%; 
           max-width: 80%;
