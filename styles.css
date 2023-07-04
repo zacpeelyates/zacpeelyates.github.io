@@ -160,10 +160,8 @@
         color: #fff;
         padding: 20px;
         text-align: center;
-        margin-top: -5%;
         top: 0;
         left: 0;
-        width: 100%;
       }
 
       header h1 {
@@ -178,27 +176,16 @@
           font-size: 1.25rem;
         }
 
-        .hcontainer
-        {
-          position: absolute;
-          margin-top: -350px;
-        }
 
         .container {
-          display: flex;
-          max-width: 50%;
-          margin: 0 auto;
-          justify-content: flex-start;
-          margin-top: 1250px;
-    
+          display: grid;
+          position: absolute;
+          translate: -50%;     
+          grid-template-columns: 1;
+          padding-top: 25px;
+          max-width: fit-content;
         }
+
         
-        .box {
-          margin-top: 0px;
-          display: inline-flex;
-          flex-basis: 100%; 
-          max-width: 80%;
-          flex-direction: column;
-        }
       }
 
