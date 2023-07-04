@@ -23,7 +23,6 @@
     text-align: center;
     margin: 0;
     width: auto;
-    padding: -1rem;
   }
 
   h1 {
@@ -120,7 +119,7 @@
     display: flex;
     max-width: 80%;
     margin: 0 auto;
-    justify-content: center; /* Align items in the center */
+    justify-content: center; 
     flex-wrap: wrap;
   }
 
@@ -138,7 +137,7 @@
     padding: 1.25rem;
     border-radius: 0.5rem;
     transition: all 0.2s ease-in-out;
-    margin: 0 auto; /* Center the individual boxes */
+    margin: 0 auto; 
   }
 
 
@@ -172,26 +171,6 @@
 
       @media (max-width: 1024px) {
 
-        h1{
-          font-size: 1rem;
-        }
-
-
-        .container {
-          display: grid;
-          position: absolute;
-          translate: -50%;     
-          grid-template-columns: 1;
-          padding-top: 25px;
-          max-width: 100%;
-          max-height: 100%;
-        }
-
-        .box{
-          max-width: 100%;
-          max-height: 100%;
-        }
-
-        
+       
       }
 
