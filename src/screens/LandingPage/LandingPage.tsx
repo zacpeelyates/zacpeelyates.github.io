@@ -1,5 +1,38 @@
 import React from "react";
+import {useState, useRef} from "react";
 import "./style.css";
+
+const VideoPlayer = () => {
+  const [playing, setPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  const onVideoPress = () => {
+    if (playing) {
+      videoRef.current?.pause();
+      setPlaying(false);
+    } else {
+      videoRef.current?.play();
+      setPlaying(true);
+    }
+  }
+
+  return (
+    <div className="video-player">
+      <video
+        ref={videoRef}
+        width = "100%"
+        height = "100%"
+        controls
+        onClick={onVideoPress}
+        className="video-player__video"
+        src="/vid/car.mp4"
+      />
+    </div>
+  )
+}
+        
+
+export default VideoPlayer;
 
 export const LandingPage = (): JSX.Element => {
   return (
@@ -52,7 +85,10 @@ export const LandingPage = (): JSX.Element => {
           </div>
         </div>
         <div className="content">
-          <div className="big-preview" />
+          <div className="big-preview">
+          <VideoPlayer />
+          </div>
+
           <div className="small-previews">
             <div className="small-preview" />
             <div className="small-preview-2" />
