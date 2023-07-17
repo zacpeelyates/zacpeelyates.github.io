@@ -30,6 +30,56 @@ const VideoPlayer = () => {
     </div>
   )
 }
+
+const ThumbnailColumn = () => ({videos, handleThumbnailClick}) => {
+  return (
+    <div>
+      {videos.map((video, index) => (
+        <div key={index} onClick={() => handleThumbnailClick(video)}>
+          {video.thumbnail}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+const videos = [
+  {
+    title: "Vehicle Physics",
+    description: "Arcade-Style SphereCast vehicle physics (Unity, C#)",
+    thumbnail: <img src="/vid/thumbnails/car.png" alt="Car System Thumbnail"/>,
+    src: "/vid/car.mp4"
+  },
+
+  {
+    title: "Rollback Networking",
+    description: "Technical demo + tutorial for peer-to-peer rollback networking (Unity, C#)", 
+    thumbnail: <img src="/vid/thumbnails/rollback.png" alt="Rollback Thumbnail"/>,
+    src: "/vid/rollback.mp4"
+  },
+
+  {
+    title : "Graphics Diorama",
+    description: "Collection of shaders and effects (Unity, HLSL, C#)",
+    thumbnail: <img src="/vid/thumbnails/shaders.png" alt="Shaders Thumbnail"/>,
+    src: "/vid/shaders.mp4"
+  },
+
+  {
+    title: "Card Creation Tool",
+    description: "Node-based visual scripting tool for implementing card effects in digital card games (Unity, C#)",
+    thumbnail: <img src="/vid/thumbnails/irp.png" alt="Cards Thumbnail"/>,
+    src: "/vid/irp.mp4"
+  },
+
+  {
+    title: "Portal Mechanics Showcase",
+    description: "Seamless portal effect + other mechanics (Unreal, C++)",
+    thumbnail: <img src="/vid/thumbnails/portal.png" alt="Portal Thumbnail"/>,
+    src: "/vid/portal.mp4"
+  }
+
+]
         
 
 export default VideoPlayer;
@@ -86,7 +136,7 @@ export const LandingPage = (): JSX.Element => {
         </div>
         <div className="content">
           <div className="big-preview">
-          <VideoPlayer />
+          <VideoPlayer/>
           </div>
 
           <div className="small-previews">
