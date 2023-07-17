@@ -28,14 +28,11 @@ export const LandingPage = (): JSX.Element => {
             <div className="BG" />
             <img className="vector" alt="Vector" src="/img/vector-1.svg" />
             <div className="pic" />
-            <a className="button" href="google.com/search?q=temp" rel="noopener noreferrer" target="_blank">
-              <div className="overlap-group">
-                <div className="frame" />
-                <div className="text-wrapper-5">résumé</div>
-              </div>
-            </a>
             <a href="mailto:zacpeelyates@gmail.com" rel="noopener noreferrer" target="_blank">
               <img className="img" alt="Button" src="/img/button-1.png" />
+            </a>
+            <a href="mailto:zacpeelyates@gmail.com" rel="noopener noreferrer" target="_blank">
+              <img className="img" alt="Button" src="/img/button-2.png" />
             </a>
             <div className="divide" />
             <div className="icons">
