@@ -1,30 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <title>zacpeelyates</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      @import url("https://fonts.googleapis.com/css?family=Roboto:300,400");
-    </style>
-    <style>
-      @import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
-      * {
-        -webkit-font-smoothing: antialiased;
-        box-sizing: border-box;
-      }
-      html,
-      body {
-        margin: 0px;
-        height: 100%;
-      }
-      a {
-        text-decoration: none;
-      }
-    </style>
+    <meta name="viewport" content="initial-scale=1, width=device-width" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
+    />
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="./src/index.tsx"></script>
+    <div class="landingpage">
+      <div class="header">
+        <div class="headertext">
+          <span class="headertext-txt">
+            <span class="hi-im">
+              <span>Hi, I’m</span>
+              <span class="span"> </span>
+            </span>
+            <span class="span">
+              <span>Zac</span>
+            </span>
+            <span class="hi-im">. Let’s make games. </span>
+          </span>
+        </div>
+        <div class="headerbody">
+          <span class="headertext-txt">
+            <p class="first-class-graduate-in-games">
+              <span class="first-class">First-class</span>
+              <span class="hi-im"> graduate in Games Programming.</span>
+            </p>
+            <p class="first-class-graduate-in-games">
+              <span class="first-class">TIGA</span>
+              <span class="hi-im"> Programming Graduate of the Year 2023.</span>
+            </p>
+          </span>
+        </div>
+      </div>
+      <div class="content">
+        <div class="profile" data-animate-on-scroll>
+          <img class="hslayout-icon" alt="" src="./public/hslayout@2x.png" />
+
+          <div class="icons">
+            <img
+              class="twt-icon"
+              alt="twitter"
+              src="./public/twt.svg"
+              id="twtImage"
+            />
+
+            <img
+              class="twt-icon"
+              alt="github"
+              src="./public/git.svg"
+              id="gitImage"
+            />
+
+            <img
+              class="twt-icon"
+              alt="linkedin"
+              src="./public/lnk.svg"
+              id="lnkImage"
+            />
+
+            <img
+              class="yt-icon"
+              alt="youtube"
+              src="./public/yt.svg"
+              id="ytImage"
+            />
+          </div>
+          <div class="buttons">
+            <button class="contact">
+              <div class="buttontext">contact</div>
+            </button>
+            <button class="contact">
+              <div class="buttontext">résumé</div>
+            </button>
+          </div>
+        </div>
+        <div class="videogrid" data-animate-on-scroll>
+          <video
+            class="bigvideo"
+            autoplay
+            muted
+            loop
+            onloadstart="this.volume = 0"
+          >
+            <source />
+          </video>
+          <video
+            class="bigvideo1"
+            autoplay
+            muted
+            loop
+            onloadstart="this.volume = 0"
+          >
+            <source />
+          </video>
+          <video
+            class="smallvideo"
+            autoplay
+            muted
+            loop
+            onloadstart="this.volume = 0"
+          >
+            <source />
+          </video>
+          <video
+            class="smallvideo1"
+            autoplay
+            muted
+            loop
+            onloadstart="this.volume = 0"
+          >
+            <source />
+          </video>
+          <video
+            class="smallvideo2"
+            autoplay
+            muted
+            loop
+            onloadstart="this.volume = 0"
+          >
+            <source />
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var twtImage = document.getElementById("twtImage");
+      if (twtImage) {
+        twtImage.addEventListener("click", function () {
+          window.open("twitter.com/zacpeelyates");
+        });
+      }
+      
+      var gitImage = document.getElementById("gitImage");
+      if (gitImage) {
+        gitImage.addEventListener("click", function () {
+          window.open("github.com/zacpeelyates");
+        });
+      }
+      
+      var lnkImage = document.getElementById("lnkImage");
+      if (lnkImage) {
+        lnkImage.addEventListener("click", function () {
+          window.open("https://uk.linkedin.com/in/zac-peel-yates");
+        });
+      }
+      
+      var ytImage = document.getElementById("ytImage");
+      if (ytImage) {
+        ytImage.addEventListener("click", function () {
+          window.open("youtube.com/@zacpeel-yates7276");
+        });
+      }
+      var scrollAnimElements = document.querySelectorAll("[data-animate-on-scroll]");
+      var observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting || entry.intersectionRatio > 0) {
+              const targetElement = entry.target;
+              targetElement.classList.add("animate");
+              observer.unobserve(targetElement);
+            }
+          }
+        },
+        {
+          threshold: 0.15,
+        }
+      );
+      
+      for (let i = 0; i < scrollAnimElements.length; i++) {
+        observer.observe(scrollAnimElements[i]);
+      }
+      </script>
   </body>
 </html>
