@@ -23,144 +23,83 @@
       </div>
 
       <div class="content">
-        <div class="profile" data-animate-on-scroll>
+        <div class="profile">
           <img class="hslayout-icon" alt="" src="./static/img/hslayout@2x.png" />
 
           <div class="icons">
-            <img
-              class="icon"
-              alt="twitter"
-              src="./static/img/twt.svg"
-              id="twtImage"
-            />
+            <!--<a href="https://twitter.com/zacpeelyates" target="_blank">-->
+              <img
+                class="icon"
+                alt="twitter"
+                src="./static/img/twt.svg"
+                id="twtImage"
+              />
 
-            <img
-              class="icon"
-              alt="github"
-              src="./static/img/git.svg"
-              id="gitImage"
-            />
+            <!--<a href="https://github.com/zacpeelyates" target="_blank">-->
+              <img
+                class="icon"
+                alt="github"
+                src="./static/img/git.svg"
+                id="gitImage"
+              />
 
-            <img
-              class="icon"
-              alt="linkedin"
-              src="./static/img/lnk.svg"
-              id="lnkImage"
-            />
+              <!--<a href="https://linkedin.com/zac-peel-yates" target="_blank">-->
+              <img
+                class="icon"
+                alt="linkedin"
+                src="./static/img/lnk.svg"
+                id="lnkImage"
+              />
 
-            <img
-              class="icon"
-              alt="youtube"
-              src="./static/img/yt.svg"
-              id="ytImage"
-            />
+              <!--<a href="https://www.youtube.com/@zacpeel-yates7276" target="_blank">-->
+                <img
+                  class="icon"
+                  alt="youtube"
+                  src="./static/img/yt.svg"
+                  id="ytImage"
+                />
           </div>
           <div class="buttons">
-            <button class="profile-button">
-              <div class="buttontext">contact</div>
-            </button>
-            <button class="profile-button">
-              <div class="buttontext">résumé</div>
-            </button>
+            <!--<a href="mailto:zacpeelyates@gmail.com" target="_blank">-->
+                <button class="profile-button">
+                  <div class="buttontext">contact</div>
+                </button>
+            <!--<a href="./static/pdf/cv.pdf" target="_blank">-->
+              <button class="profile-button">
+                <div class="buttontext">résumé</div>
+
+              </button>
           </div>
         </div>
-        <div class="videogrid" data-animate-on-scroll>
-          <video
-            class="preview-big"
-            autoplay
-            muted
-            loop
-            onloadstart="this.volume = 0"
-          >
-            <source />
-          </video>
-          <video
-            class="preview-big"
-            autoplay
-            muted
-            loop
-            onloadstart="this.volume = 0"
-          >
-            <source />
-          </video>
-          <video
-            class="preview-small"
-            autoplay
-            muted
-            loop
-            onloadstart="this.volume = 0"
-          >
-            <source />
-          </video>
-          <video
-            class="preview-small"
-            autoplay
-            muted
-            loop
-            onloadstart="this.volume = 0"
-          >
-            <source />
-          </video>
-          <video
-            class="preview-small"
-            autoplay
-            muted
-            loop
-            onloadstart="this.volume = 0"
-          >
-            <source />
-          </video>
+        <div class="videogrid">
+          <div class="video-container">
+            <!--<img src="./static/vid/thumbnails/car.jpg" alt="Vehicle Physics">-->
+            <video class="preview-big" autoplay loop onloadstart="this.volume = 0" src="./static/vid/car.mp4">
+          </div>
+        
+          <div class="video-container">
+            <!--<img src="./static/vid/thumbnails/irp.jpg" alt="Card Editor">-->
+            <video class="preview-big" autoplay muted loop onloadstart="this.volume = 0" src="./static/vid/irp.mp4">
+          </div>
+        
+          <div class="video-container">
+           <!--<img src="./static/vid/thumbnails/shader.jpg" alt="Shader Diorama">-->
+            <video class="preview-small" autoplay muted loop onloadstart="this.volume = 0" src="./static/vid/shader.mp4">
+          </div>
+        
+          <div class="video-container">
+            <!--<img src="./static/vid/thumbnails/rollback.jpg" alt="Rollback Netcode">-->
+            <video class="preview-small" autoplay muted loop onloadstart="this.volume = 0" src="./static/vid/rollback.mp4">
+          </div>
+        
+          <div class="video-container">
+            <!--<img src="./static/vid/thumbnails/portal.jpg" alt="Portal">-->
+            <video class="preview-small" autoplay muted loop onloadstart="this.volume = 0" src="./static/vid/portal.mp4">
+          </div>
         </div>
+        
       </div>
     </div>
 
-    <script>
-      var twtImage = document.getElementById("twtImage");
-      if (twtImage) {
-        twtImage.addEventListener("click", function () {
-          window.open("twitter.com/zacpeelyates");
-        });
-      }
-      
-      var gitImage = document.getElementById("gitImage");
-      if (gitImage) {
-        gitImage.addEventListener("click", function () {
-          window.open("github.com/zacpeelyates");
-        });
-      }
-      
-      var lnkImage = document.getElementById("lnkImage");
-      if (lnkImage) {
-        lnkImage.addEventListener("click", function () {
-          window.open("https://uk.linkedin.com/in/zac-peel-yates");
-        });
-      }
-      
-      var ytImage = document.getElementById("ytImage");
-      if (ytImage) {
-        ytImage.addEventListener("click", function () {
-          window.open("youtube.com/@zacpeel-yates7276");
-        });
-      }
-      var scrollAnimElements = document.querySelectorAll("[data-animate-on-scroll]");
-      var observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting || entry.intersectionRatio > 0) {
-              const targetElement = entry.target;
-              targetElement.classList.add("animate");
-              observer.unobserve(targetElement);
-            }
-          }
-        },
-        {
-          threshold: 0.15,
-        }
-      );
-      
-      for (let i = 0; i < scrollAnimElements.length; i++) {
-        observer.observe(scrollAnimElements[i]);
-      }
-      </script>
   </body>
 </html>
