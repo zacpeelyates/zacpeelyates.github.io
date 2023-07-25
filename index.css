@@ -21,8 +21,8 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding: 2rem;
-  padding-bottom: 1rem;
+  padding: 1vh;
+  margin: 10px;
   align-items: flex-start;
   z-index: 0;
   height: fit-content;
@@ -54,8 +54,8 @@
 .hslayout-icon {
   border-radius: 100px;
   max-width: 50%;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding:10px;
+
   object-fit: cover;
 }
 
@@ -63,63 +63,62 @@
   align-self: stretch;
   display: flex;
   flex-direction: row;
-  padding: 1rem;
   align-items: flex-start;
-  gap: 10px;
+  gap: 0.5vw;
   justify-content: center;
+  max-width: max-content;
 }
 
-.icon{
-  max-width: 25%;
- 
+.icon
+{
+  overflow: auto;
+  width: 25%;
 }
 
 .buttontext {
-  position: relative;
-  font-size: var(--font-size-medium);
-  font-family: var(--font-roboto);
-  color: var(--color-palegreen-100);
+  position: relative;  
+  font-size: var(--font-size-medium);  
+  font-family: var(--font-roboto); 
+  color: var(--color-palegreen-100); 
   text-align: center;
-  width: 13.38rem;
-  height: 4.75rem;
-  flex-shrink: 0;
+  max-width: 50%;
+  height: fit-content;
   justify-content: center;
   display: flex;
   align-items: center;
+  padding: 1.5vw;
 }
 
 .profile-button {
   cursor: pointer;
   border: 2px solid var(--color-palegreen-100);
-  padding: 0rem;
   background-color: var(--color-palegreen-200);
   border-radius: var(--br-3xs);
   flex-direction: row;
   justify-content: center;
   display: flex;
   align-items: center;
-  max-width: 60%;
-  max-height: 35%;
+  max-width: 80%;
+  max-height: 40%;
 }
 
 .buttons {
   align-self: stretch;
-  padding: 1rem var(--padding-3xs);
+  padding: 1vh var(--padding-3xs);
   justify-content: center;
-  gap: 1.25rem;
+  gap: 2vh;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
+
 .profile {
   border-radius: 20px;
   background-color: var(--color-main);
   border: 2px solid var(--color-pink);
   box-sizing: border-box;
-  max-height: 40rem; 
-  max-width: 24rem;
   padding: var(--padding-xl) var(--padding-3xs);
-  margin: 2rem;
+  margin: 2vw;
   justify-content: center;
   gap: var(--gap-3xs);
   opacity: 1;
@@ -151,19 +150,19 @@
    position:relative;
    border-radius: var(--br-3xs);
    background-color: var(--color-gray-100);
-   min-width: 20rem;
    margin: 5px;
+   overflow: hidden;
 }
 
 .preview-big
 {
-  max-width: 30rem;
+  max-width: 30vw;
   grid-column: span 2;
 }
 
 .preview-small
 {
-  max-width: 22rem;
+  max-width: 22vw;
 }
 
 
