@@ -73,33 +73,87 @@
         </div>
         <div class="videogrid">
           <div class="video-container">
-            <!--<img src="./static/vid/thumbnails/car.jpg" alt="Vehicle Physics">-->
-            <video class="preview-big" autoplay loop onloadstart="this.volume = 0" src="./static/vid/car.mp4">
+            <video class="preview-big" loop onloadstart="this.volume = 0" src="./static/vid/car.mp4" id="carPreview">
           </div>
         
           <div class="video-container">
-            <!--<img src="./static/vid/thumbnails/irp.jpg" alt="Card Editor">-->
-            <video class="preview-big" autoplay muted loop onloadstart="this.volume = 0" src="./static/vid/irp.mp4">
+            <video class="preview-big" muted loop onloadstart="this.volume = 0" src="./static/vid/irp.mp4" id="irpPreview">
           </div>
         
           <div class="video-container">
-           <!--<img src="./static/vid/thumbnails/shader.jpg" alt="Shader Diorama">-->
-            <video class="preview-small" autoplay muted loop onloadstart="this.volume = 0" src="./static/vid/shader.mp4">
+            <video class="preview-small"  muted loop onloadstart="this.volume = 0" src="./static/vid/shader.mp4" id="shaderPreview">
           </div>
         
           <div class="video-container">
-            <!--<img src="./static/vid/thumbnails/rollback.jpg" alt="Rollback Netcode">-->
-            <video class="preview-small" autoplay muted loop onloadstart="this.volume = 0" src="./static/vid/rollback.mp4">
+            <video class="preview-small"  muted loop onloadstart="this.volume = 0" src="./static/vid/rollback.mp4" id="rollbackPreview">
           </div>
         
           <div class="video-container">
-            <!--<img src="./static/vid/thumbnails/portal.jpg" alt="Portal">-->
-            <video class="preview-small" autoplay muted loop onloadstart="this.volume = 0" src="./static/vid/portal.mp4">
+            <video class="preview-small"  muted loop onloadstart="this.volume = 0" src="./static/vid/portal.mp4" id="portalPreview">
           </div>
         </div>
         
       </div>
     </div>
+
+    <script>
+      document.getElementById("twtImage").addEventListener("click", function() {
+        window.open("https://twitter.com/zacpeelyates", "_blank");
+      });
+      document.getElementById("gitImage").addEventListener("click", function() {
+        window.open("https://github.com/zacpeelyates", "_blank");
+      });
+      document.getElementById("lnkImage").addEventListener("click", function() {
+        window.open("https://linkedin.com/zac-peel-yates", "_blank");
+      });
+      document.getElementById("ytImage").addEventListener("click", function() {
+        window.open("https://www.youtube.com/@zacpeel-yates7276", "_blank");
+      });
+
+      document.getElementById("carPreview").addEventListener("click", function() {
+        window.open("https://comx.uogs.co.uk/23/teams/patchwork-games/", "_blank");
+      });
+
+      document.getElementById("irpPreview").addEventListener("click", function() {
+        window.open("https://www.canva.com/design/DAFjFRBTycM/ZH4USFpLpWVfr1undLsiRA/view?utm_content=DAFjFRBTycM", "_blank");
+      });
+
+      document.getElementById("shaderPreview").addEventListener("click", function() {
+        window.open("https://www.canva.com/design/DAFXFVPS3gg/niyeXDXJe490GLp8L-fX0g/view?utm_content=DAFXFVPS3gg", "_blank");
+      });
+
+      document.getElementById("rollbackPreview").addEventListener("click", function() {
+        window.open("https://www.youtube.com/watch?v=lCfouAH_N5w", "_blank");
+      });
+
+      document.getElementById("portalPreview").addEventListener("click", function() {
+        window.open("https://github.com/zacpeelyates/unrealmechanics/", "_blank");
+      });
+
+      function playVideo(element) {
+        element.play();
+      }
+
+      function resetVideo(element) {
+        element.pause();
+        element.currentTime = 0;
+      }
+
+      const videoContainers = document.querySelectorAll(".video-container");
+
+      videoContainers.forEach((container) => {
+        const videoElement = container.querySelector("video");
+
+        container.addEventListener("mouseover", function () {
+          playVideo(videoElement);
+        });
+
+        container.addEventListener("mouseout", function () {
+          resetVideo(videoElement);
+        });
+      });
+      
+      </script>
 
   </body>
 </html>

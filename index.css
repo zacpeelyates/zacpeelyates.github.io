@@ -73,7 +73,15 @@
 {
   overflow: auto;
   width: 25%;
+  cursor: pointer;
+  opacity: 80%;
 }
+
+.icon:hover
+{
+  opacity: 100%;
+}
+
 
 .buttontext {
   position: relative;  
@@ -102,6 +110,11 @@
   max-height: 40%;
 }
 
+.profile-button:hover
+{
+  background-color: var(--color-palegreen-200-hover);
+}
+
 .buttons {
   align-self: stretch;
   padding: 1vh var(--padding-3xs);
@@ -125,6 +138,15 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  opacity: 80%;
+  transition: box-shadow 1s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.profile:hover
+{
+  box-shadow:0px 0px 20px 30px var(--color-gray-100) inset; 
+  opacity: 100%;
 }
 
 .profile.animate {
@@ -152,6 +174,15 @@
    background-color: var(--color-gray-100);
    margin: 5px;
    overflow: hidden;
+   cursor: pointer;
+   border: 3px solid var(--color-gray-100);
+   transition: border-color 0.25s ease-in;
+}
+
+[class*=preview-]:hover
+{
+  cursor: pointer;
+  border-color: var(--color-pink);
 }
 
 .preview-big
@@ -164,10 +195,6 @@
 {
   max-width: 22vw;
 }
-
-
-
-
 
 .videogrid.animate {
   animation: 1s ease 0s 1 normal forwards fade-in;
