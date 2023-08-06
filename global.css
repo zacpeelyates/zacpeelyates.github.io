@@ -16,6 +16,8 @@ body {
   --font-size-large: 2rem;
   --font-size-medium: 1.5rem;
   --font-size-small: 1rem;
+  --font-size-xsmall: 0.75rem;
+  --font-size-xxsmall: 0.5rem;
 
   /* Colors */
   --color-gray-100: rgba(32, 42, 68, 0.75);
