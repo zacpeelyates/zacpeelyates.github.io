@@ -24,67 +24,67 @@
 
       <div class="content">
 
-        <div class="profile">
-          <img class="hslayout-icon" alt="" src="./static/img/hslayout@2x.png" />
-
-          <div class="icons">
-            <!--<a href="https://twitter.com/zacpeelyates" target="_blank">-->
-              <img
-                class="icon"
-                alt="twitter"
-                src="./static/img/twt.svg"
-                id="twtImage"
-              />
-
-            <!--<a href="https://github.com/zacpeelyates" target="_blank">-->
-              <img
-                class="icon"
-                alt="github"
-                src="./static/img/git.svg"
-                id="gitImage"
-              />
-
-              <!--<a href="https://linkedin.com/in/zac-peel-yates" target="_blank">-->
-              <img
-                class="icon"
-                alt="linkedin"
-                src="./static/img/lnk.svg"
-                id="lnkImage"
-              />
-
-              <!--<a href="https://www.youtube.com/@zacpeel-yates7276" target="_blank">-->
-                <img
-                  class="icon"
-                  alt="youtube"
-                  src="./static/img/yt.svg"
-                  id="ytImage"
-                />
-          </div>
-          <div class="buttons">
-            <!--<a href="mailto:zacpeelyates@gmail.com" target="_blank">-->
-                <button class="profile-button" id="contactButton">
-                  <div class="buttontext" >contact</div>
-                </button>
-            <!--<a href="./static/pdf/cv.pdf" target="_blank">-->
-              <button class="profile-button" id="cvButton">
-                <div class="buttontext">résumé</div>
-
-              </button>
-          </div>
-        </div>
-
         <div class="NavContentContainer">
         <div class="NavigationContainer">
-          <button class = "tabLink" onclick="changeTab('StitchedUpContent', this)" id="defaultOpen"> <div class="lightweight">Vehicle Physics</div></button>
-          <button class = "tabLink" onclick="changeTab('IRPContent', this)"> <div class= "lightweight">Card Game Tools</div></button>
+          <button class = "tabLink" onClick="changeTab('AboutContent', this)"> <div class="lightweight" id = "defaultOpen">About</div></button>
+          <button class = "tabLink" onclick="changeTab('StitchedUpContent', this)"> <div class="lightweight">Vehicle Physics</div></button>
+          <button class = "tabLink" onclick="changeTab('IRPContent', this)"> <div class= "lightweight">CCG Tools</div></button>
           <button class = "tabLink" onclick="changeTab('ShaderContent', this)"><div class ="lightweight">Shader Diorama</div></button>
           <button class = "tabLink" onclick="changeTab('PortalContent', this)"><div class =" lightweight">Portal Rendering</div></button>
           <button class = "tabLink" onclick="changeTab('RollbackContent', this)"><div class ="lightweight">Rollback Netcode</div></button>
         </div>
-       
+    
         <div class="TabContentContainer">
+          <div class="profile">
+            <img class="hslayout-icon" alt="" src="./static/img/hslayout@2x.png" />
+    
+            <div class="icons">
+              <!--<a href="https://twitter.com/zacpeelyates" target="_blank">-->
+                <img
+                  class="icon"
+                  alt="twitter"
+                  src="./static/img/twt.svg"
+                  id="twtImage"
+                />
+    
+              <!--<a href="https://github.com/zacpeelyates" target="_blank">-->
+                <img
+                  class="icon"
+                  alt="github"
+                  src="./static/img/git.svg"
+                  id="gitImage"
+                />
+    
+                <!--<a href="https://linkedin.com/in/zac-peel-yates" target="_blank">-->
+                <img
+                  class="icon"
+                  alt="linkedin"
+                  src="./static/img/lnk.svg"
+                  id="lnkImage"
+                />
+    
+                <!--<a href="https://www.youtube.com/@zacpeel-yates7276" target="_blank">-->
+                  <img
+                    class="icon"
+                    alt="youtube"
+                    src="./static/img/yt.svg"
+                    id="ytImage"
+                  />
+            </div>
+            <div class="buttons">
+              <!--<a href="mailto:zacpeelyates@gmail.com" target="_blank">-->
+                  <button class="profile-button" id="contactButton">
+                    <div class="buttontext" >contact</div>
+                  </button>
+              <!--<a href="./static/pdf/cv.pdf" target="_blank">-->
+                <button class="profile-button" id="cvButton">
+                  <div class="buttontext">résumé</div>
+    
+                </button>
+            </div>
+          </div>
           <div id="StitchedUpContent" class="tabContent">
-            <div class="xlarge lightweight" style="margin-top: -30px">Vehicle Physics</div>
+            <div class="xlarge lightweight">Vehicle Physics</div>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Title: </span>Stitched Up!</div>
               <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
@@ -92,6 +92,11 @@
               <div><span class="regularweight">Year: </span>2023 - 2024</div>
             </div>
             <iframe width="480" height="270" src="https://www.youtube.com/embed/7h2o6eY-vkk" title="Stitched Up! -- COMX 2023 Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+
+          <div id="AboutContent" class="tabContent">
+            
+             
           </div>
 
           <div id="IRPContent" class="tabContent">
@@ -135,6 +140,7 @@
         </div>
 
       </div>
+
     </div>
 
     <script>
