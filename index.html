@@ -13,16 +13,17 @@
   <body>
     <div class="landingpage">
 
-      <div class="header lightweight">
-          <div class = "large"> Hi, I’m <span class="highlight regularweight">Zac</span>. Let’s make games.</div> 
+      <div class="xlarge header">
+          <div class = "lightweight">Hi, I’m <span class="highlight regularweight">Zac.</span> Let's make games.</div> 
 
-          <div>  
-          <span class = "regularweight">First-Class</span> Graduate in Games Programming.<br>
-          <span class = "regularweight">TIGA</span> Programming Graduate of the Year 2023. 
+          <div class = "medium">  
+          <span class = "regularweight">First-Class</span> Graduate in Games Programming<br>
+          <span class = "regularweight">TIGA</span> Outstanding Programming Graduate 2023
           </div>    
       </div>
 
       <div class="content">
+
         <div class="profile">
           <img class="hslayout-icon" alt="" src="./static/img/hslayout@2x.png" />
 
@@ -61,38 +62,78 @@
           </div>
           <div class="buttons">
             <!--<a href="mailto:zacpeelyates@gmail.com" target="_blank">-->
-                <button class="profile-button">
-                  <div class="buttontext" id="contactButton">contact</div>
+                <button class="profile-button" id="contactButton">
+                  <div class="buttontext" >contact</div>
                 </button>
             <!--<a href="./static/pdf/cv.pdf" target="_blank">-->
-              <button class="profile-button">
-                <div class="buttontext" id="cvButton">résumé</div>
+              <button class="profile-button" id="cvButton">
+                <div class="buttontext">résumé</div>
 
               </button>
           </div>
         </div>
-        <div class="videogrid">
-          <div class="video-container">
-            <video class="preview-big" loop onloadstart="this.volume = 0" src="./static/vid/car.mp4" id="carPreview">
-          </div>
-        
-          <div class="video-container">
-            <video class="preview-big" muted loop onloadstart="this.volume = 0" src="./static/vid/irp.mp4" id="irpPreview">
-          </div>
-        
-          <div class="video-container">
-            <video class="preview-small"  muted loop onloadstart="this.volume = 0" src="./static/vid/shader.mp4" id="shaderPreview">
-          </div>
-        
-          <div class="video-container">
-            <video class="preview-small"  muted loop onloadstart="this.volume = 0" src="./static/vid/rollback.mp4" id="rollbackPreview">
-          </div>
-        
-          <div class="video-container">
-            <video class="preview-small"  muted loop onloadstart="this.volume = 0" src="./static/vid/portal.mp4" id="portalPreview">
-          </div>
+
+        <div class="NavContentContainer">
+        <div class="NavigationContainer">
+          <button class = "tabLink" onclick="changeTab('StitchedUpContent', this)" id="defaultOpen"> <div class="lightweight">Vehicle Physics</div></button>
+          <button class = "tabLink" onclick="changeTab('IRPContent', this)"> <div class= "lightweight">Card Game Tools</div></button>
+          <button class = "tabLink" onclick="changeTab('ShaderContent', this)"><div class ="lightweight">Shader Diorama</div></button>
+          <button class = "tabLink" onclick="changeTab('PortalContent', this)"><div class =" lightweight">Portal Rendering</div></button>
+          <button class = "tabLink" onclick="changeTab('RollbackContent', this)"><div class ="lightweight">Rollback Netcode</div></button>
         </div>
-        
+       
+        <div class="TabContentContainer">
+          <div id="StitchedUpContent" class="tabContent">
+            <div class="xlarge lightweight" style="margin-top: -30px">Vehicle Physics</div>
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Title: </span>Stitched Up!</div>
+              <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Year: </span>2023 - 2024</div>
+            </div>
+            <iframe width="480" height="270" src="https://www.youtube.com/embed/7h2o6eY-vkk" title="Stitched Up! -- COMX 2023 Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+          </div>
+
+          <div id="IRPContent" class="tabContent">
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Title: </span>Card Game Visual Scripting Framework</div>
+              <div><span class="regularweight">Role: </span>Tools Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Year: </span>2023</div>
+            </div>
+          </div>
+
+
+          <div id="RollbackContent" class="tabContent">
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Title: </span>Rollback Netcode Demonstration</div>
+              <div><span class="regularweight">Role: </span>Network Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Year: </span>2022</div>
+            </div>
+          </div>
+
+          <div id="ShaderContent" class="tabContent">
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Title: </span>Shader Diorama</div>
+              <div><span class="regularweight">Role: </span>Graphics Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Year: </span>2023</div>
+            </div>
+          </div>
+
+          <div id="PortalContent" class="tabContent">
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Title: </span>Unreal Mechanics Showcase</div>
+              <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unreal (C++)</div>
+              <div><span class="regularweight">Year: </span>2021</div>
+            </div>
+          </div>
+      </div>
+
+        </div>
+
       </div>
     </div>
 
@@ -110,57 +151,29 @@
         window.open("https://www.youtube.com/@zacpeel-yates7276", "_blank");
       });
 
-      document.getElementById("carPreview").addEventListener("click", function() {
-        window.open("https://comx.uogs.co.uk/23/teams/patchwork-games/", "_blank");
-      });
-
-      document.getElementById("irpPreview").addEventListener("click", function() {
-        window.open("https://www.canva.com/design/DAFjFRBTycM/ZH4USFpLpWVfr1undLsiRA/view?utm_content=DAFjFRBTycM", "_blank");
-      });
-
-      document.getElementById("shaderPreview").addEventListener("click", function() {
-        window.open("https://www.canva.com/design/DAFXFVPS3gg/niyeXDXJe490GLp8L-fX0g/view?utm_content=DAFXFVPS3gg", "_blank");
-      });
-
-      document.getElementById("rollbackPreview").addEventListener("click", function() {
-        window.open("https://www.youtube.com/watch?v=lCfouAH_N5w", "_blank");
-      });
-
-      document.getElementById("portalPreview").addEventListener("click", function() {
-        window.open("https://github.com/zacpeelyates/unrealmechanics/", "_blank");
-      });
-
       document.getElementById("contactButton").addEventListener("click", function() {
         window.open("mailto:zacpeelyates@gmail.com", "_blank");
       });
 
       document.getElementById("cvButton").addEventListener("click", function() {
         window.open("./static/pdf/cv.pdf", "_blank");
-      });
-
-      function playVideo(element) {
-        element.play();
-      }
-
-      function resetVideo(element) {
-        element.pause();
-        element.currentTime = 0;
-      }
-
-      const videoContainers = document.querySelectorAll(".video-container");
-
-      videoContainers.forEach((container) => {
-        const videoElement = container.querySelector("video");
-
-        container.addEventListener("mouseover", function () {
-          playVideo(videoElement);
-        });
-
-        container.addEventListener("mouseout", function () {
-          resetVideo(videoElement);
-        });
-      });
+      }); 
       
+      function changeTab(tabName, tabElement)
+      {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabContent");
+        for(i = 0; i < tabcontent.length; i++)
+        {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tabLink");
+
+        document.getElementById(tabName).style.display = "block";
+      }
+
+      document.getElementById("defaultOpen").click();
+
       </script>
 
   </body>

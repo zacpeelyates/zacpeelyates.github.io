@@ -22,6 +22,7 @@ body {
   /* Colors */
   --color-gray-100: rgba(32, 42, 68, 0.75);
   --color-pink: #ffc0cb;
+  --color-pink-half: #ffc0cb26;
   --color-palegreen-100: #98ff98;
   --color-palegreen-200: rgba(152, 255, 152, 0.1);
   --color-palegreen-200-hover: rgba(152,255,152,0.25);
