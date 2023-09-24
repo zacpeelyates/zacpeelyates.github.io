@@ -107,7 +107,7 @@
             <div class="medium">
             <p>Developed in a team of six for our final assignment at university, 'Stitched Up' is a party game where players are tasked with creating and defending their territory in a chaotic battle between souped-up sewing karts. 
             </p>           
-            <iframe style="display: block; margin: auto; text-align: center;" width="480" height="270" src="https://www.youtube.com/embed/7h2o6eY-vkk" title="Stitched Up! -- COMX 2023 Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <iframe style="display: block; margin: auto; text-align: center;"  width="640" height="360" src="https://www.youtube.com/embed/7h2o6eY-vkk?enablejsapi=1" title="Stitched Up! -- COMX 2023 Trailer" frameborder="0" allow=" accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             <p>As the lead gameplay programmer for the project, I created the vehicle physics alongside other core gameplay systems such as input handling, powerups, and combat mechanics.</p>
             <div style="display: flex; gap: 20px;" >
             <pre style="max-height: 270px; max-width: 40%; line-height: 10%;overflow-wrap: normal;"><code class="language-csharp" style="font-size: x-small;">public static void SuspensionForce(Transform wheel, RaycastHit[] hits, 
@@ -222,7 +222,10 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
               <div><span class="regularweight">Engine: </span>Unity (C#)</div>
               <div><span class="regularweight">Year: </span>2022</div>
             </div>
-            <iframe style="display: block; margin: auto; text-align: center;" width="960" height="540" src="https://www.youtube.com/embed/lCfouAH_N5w?si=ysLsLZH2H0Qpy8ad" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p class="medium">While this project is older than the others, it is something I am very proud of creating. <br>An explanation, implementation & demonstration of Rollback Networking within Unity.
+              <br><br>The video below has had overwhelmingly positive feedback from people looking for resources on the topic, and I earned 100/100 marks on the assignment.
+              I am a huge fan of fighting games and rollback has revolutionized the way they are played online.</p>
+            <iframe style="display: block; margin: auto; text-align: center;" width="960" height="540" src="https://www.youtube.com/embed/lCfouAH_N5w?si=ysLsLZH2H0Qpy8ad?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
 
 <!--------------------------------------------------------------------------------------------------------------- -->
@@ -285,17 +288,28 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
       document.getElementById("cvButton").addEventListener("click", function() {
         window.open("./static/pdf/cv.pdf", "_blank");
       }); 
+
       
+      function PauseAllYoutubeIframes()
+      {
+        var iframes = document.getElementsByTagName("iframe");
+        for(var i = 0; i < iframes.length; i++)
+        {
+          iframes[i].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+      }
+
+
       function changeTab(tabName, tabElement)
       {
-        var i, tabcontent, tablinks;
+        var i, tabcontent, tablinks, videos;
         tabcontent = document.getElementsByClassName("tabContent");
         for(i = 0; i < tabcontent.length; i++)
         {
           tabcontent[i].style.display = "none";
         }
         tablinks = document.getElementsByClassName("tabLink");
-
+        PauseAllYoutubeIframes();      
         document.getElementById(tabName).style.display = "block";
       }
 
