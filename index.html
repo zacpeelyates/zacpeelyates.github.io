@@ -5,12 +5,11 @@
     <meta name="viewport" content="initial-scale=1, width=device-width" />
     <link rel="stylesheet" href="./global.css" />
     <link rel="stylesheet" href="./index.css" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
-    />
+    <link rel="stylesheet" href="pckg/prism.css">
+    <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"/>
   </head>
   <body>
+    
     <div class="landingpage">
 
       <div class="xlarge header">
@@ -18,7 +17,7 @@
 
           <div class = "medium">  
           <span class = "regularweight">First-Class</span> Graduate in Games Programming<br>
-          <span class = "regularweight">TIGA</span> Outstanding Programming Graduate 2023
+          <span class = "regularweight">TIGA</span> Outstanding Programming Graduate '23
           </div>    
       </div>
 
@@ -26,12 +25,12 @@
 
         <div class="NavContentContainer">
         <div class="NavigationContainer">
-          <button class = "tabLink" onClick="changeTab('AboutContent', this)"> <div class="lightweight" id = "defaultOpen">About</div></button>
+          <button class = "tabLink" onClick="changeTab('AboutContent', this)"> <div class="lightweight" id = "defaultOpen">About Me</div></button>
           <button class = "tabLink" onclick="changeTab('StitchedUpContent', this)"> <div class="lightweight">Vehicle Physics</div></button>
           <button class = "tabLink" onclick="changeTab('IRPContent', this)"> <div class= "lightweight">CCG Tools</div></button>
           <button class = "tabLink" onclick="changeTab('ShaderContent', this)"><div class ="lightweight">Shader Diorama</div></button>
-          <button class = "tabLink" onclick="changeTab('PortalContent', this)"><div class =" lightweight">Portal Rendering</div></button>
           <button class = "tabLink" onclick="changeTab('RollbackContent', this)"><div class ="lightweight">Rollback Netcode</div></button>
+          <!--<button class = "tabLink" onclick="changeTab('PortalContent', this)"><div class ="lightweight">Portal Rendering</div></button>-->
         </div>
     
         <div class="TabContentContainer">
@@ -83,51 +82,172 @@
                 </button>
             </div>
           </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
+
+          <div id="AboutContent" class="tabContent">
+            <div class="xlarge lightweight">About Me</div>
+               <p class="medium" style="line-height: 130%">Graduate games programmer, currently based in Bristol, England. <br>
+                Passionate about games as a player and developer. <br>
+                Specialized in building and understanding tools and systems. <br>
+                Always looking to improve and develop myself, as well as the games I work on. <br>              
+               </p>
+               <p class="medium"> second </p>
+            </div>
+  
+            <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="StitchedUpContent" class="tabContent">
             <div class="xlarge lightweight">Vehicle Physics</div>
             <div class="medium lightweight infobar">
-              <div><span class="regularweight">Title: </span>Stitched Up!</div>
+              <div><span class="regularweight">Title: </span>Stitched Up</div>
               <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
               <div><span class="regularweight">Engine: </span>Unity (C#)</div>
-              <div><span class="regularweight">Year: </span>2023 - 2024</div>
+              <div><span class="regularweight">Year: </span>2023</div>
             </div>
-            <iframe width="480" height="270" src="https://www.youtube.com/embed/7h2o6eY-vkk" title="Stitched Up! -- COMX 2023 Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <div class="medium">
+            <p>Developed in a team of six for our final assignment at university, 'Stitched Up' is a party game where players are tasked with creating and defending their territory in a chaotic battle between souped-up sewing karts. 
+            </p>           
+            <iframe style="display: block; margin: auto; text-align: center;" width="480" height="270" src="https://www.youtube.com/embed/7h2o6eY-vkk" title="Stitched Up! -- COMX 2023 Trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <p>As the lead gameplay programmer for the project, I created the vehicle physics alongside other core gameplay systems such as input handling, powerups, and combat mechanics.</p>
+            <div style="display: flex; gap: 20px;" >
+            <pre style="max-height: 270px; max-width: 40%; line-height: 10%;overflow-wrap: normal;"><code class="language-csharp" style="font-size: x-small;">public static void SuspensionForce(Transform wheel, RaycastHit[] hits, 
+                                      CarSettings settings, Rigidbody rb)
+{
+  float velocity = Vector3.Dot(rb.GetPointVelocity(wheel.position), wheel.up);
+  float maxDistance = hits.Max(hit => hit.distance);
+  foreach (RaycastHit hit in hits)
+  {
+      //Spring Compression
+      float offset = settings.SuspensionRestLength - (hit.distance - settings.RayVerticalOffset);
+
+      //Suspension Force = offset * strength  -  upward vel * dampning    
+      float force = (offset * settings.SuspensionStiffness) - (velocity * settings.SuspensionDamping);
+      force /= hits.Count(); //Average out force on wheel across all hits 
+
+      //Apply force to vertical axis, ignoring mass
+      Vector3 result = force * Vector3.Dot(wheel.up, hit.normal) * wheel.up;
+      rb.AddForceAtPosition(result, wheel.position, ForceMode.Acceleration);
+  }
+}
+
+
+public static void ResistanceForce(Transform wheel, Vector3 axis, 
+                          float damp, float scalar, Rigidbody rb)
+{
+  //Used for drifting and braking 
+  //Get velocity along axis (right for drift, forward for brake)
+  float velocity = Vector3.Dot(rb.GetPointVelocity(wheel.position), axis);
+
+  //resistance accel (applied in the opposite direction and damped)
+  //scaled by TireMass for drift, BrakeStrength for brake
+  float resistance = -velocity * scalar * damp / Time.fixedDeltaTime;
+
+  //Apply force to axis
+  Vector3 result = resistance * axis;
+  rb.AddForceAtPosition(result, wheel.position);
+}
+
+
+public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL_INDEX index,
+                                                         CarSettings settings, Rigidbody rb)
+{
+  if (input == 0) return; //early out
+  bool drive = false; //can this wheel produce a driving force?
+  if (settings.FrontWheelDrive && (index == CarDataTypes.WHEEL_INDEX.FRONT_LEFT || 
+    index == CarDataTypes.WHEEL_INDEX.FRONT_RIGHT)) drive = true;
+  else if (settings.RearWheelDrive && (index == CarDataTypes.WHEEL_INDEX.BACK_LEFT || 
+    index == CarDataTypes.WHEEL_INDEX.BACK_RIGHT)) drive = true;
+  if (!drive) return; //if not, return
+
+  //velocity of car applied to wheel
+  float velocity = Vector3.Dot(wheel.forward, rb.velocity); 
+
+  //are we trying to change direction? 
+  bool changingDirection = Mathf.Sign(velocity) != Mathf.Sign(input); 
+  float max = input > 0 ? settings.MaxSpeed : settings.MaxSpeedReverse;
+
+  //If we are changing direction, apply resistance force
+  if (changingDirection) ResistanceForce(wheel, wheel.forward, 
+                          settings.TireGrip, settings.BrakeStrength, rb); 
+  float normalVel = Mathf.Clamp01(Mathf.Abs(velocity) / max);
+
+  //How much torque is available? 
+  float torque = normalVel == 1 ? 1 : settings.AccelCurve.Evaluate(normalVel); 
+
+  //resulting force
+  Vector3 result = torque * input * wheel.forward;
+
+  //dampen result based on velocity
+  float dampening = 1 - Mathf.Clamp01(Mathf.InverseLerp(max * (1 - settings.AccelDampen),
+                                                               max, Mathf.Abs(velocity))); 
+  
+  //Apply as accel to ignore mass
+  rb.AddForceAtPosition(dampening * settings.Acceleration * result, wheel.position, 
+                                                            ForceMode.Acceleration); 
+}</code></pre>
+          <video src="static/vid/car.mp4" autoplay loop muted style="max-width: 50%;"></video>
+            </div>
+              <p class="medium">This project was showcased at COMX 2023, where it was played by members of the public.<br>Seeing others play our game and enjoy the mechanics and systems I created was a great experience.
+              </div>
           </div>
 
-          <div id="AboutContent" class="tabContent">
-            
-             
-          </div>
-
+<!--------------------------------------------------------------------------------------------------------------- -->
           <div id="IRPContent" class="tabContent">
+            <div class="xlarge lightweight">CCG Visual Scripting Tool</div>
             <div class="medium lightweight infobar">
-              <div><span class="regularweight">Title: </span>Card Game Visual Scripting Framework</div>
+              <div><span class="regularweight">Project: </span>Dissertation</div>
               <div><span class="regularweight">Role: </span>Tools Programmer</div>
               <div><span class="regularweight">Engine: </span>Unity (C#)</div>
               <div><span class="regularweight">Year: </span>2023</div>
             </div>
-          </div>
 
+            <p class="medium">For my final individual university project, I developed a bespoke visual scripting solution for implementing card effects in digital card games.
+              This included developing a custom node editor, as well as the logic and systems to interpret the graphs and execute the effects in-game.
+            </p>
+            <div style="position: relative; width: 100%; height: 0; padding-top: 70%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFjFRBTycM&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+  </div>           
+</div>
 
+<!--------------------------------------------------------------------------------------------------------------- -->
           <div id="RollbackContent" class="tabContent">
+            <div class="xlarge lightweight">Rollback Netcode</div>
             <div class="medium lightweight infobar">
-              <div><span class="regularweight">Title: </span>Rollback Netcode Demonstration</div>
+              <div><span class="regularweight">Project: </span>Game Engine Programming</div>
               <div><span class="regularweight">Role: </span>Network Programmer</div>
               <div><span class="regularweight">Engine: </span>Unity (C#)</div>
               <div><span class="regularweight">Year: </span>2022</div>
             </div>
+            <iframe style="display: block; margin: auto; text-align: center;" width="960" height="540" src="https://www.youtube.com/embed/lCfouAH_N5w?si=ysLsLZH2H0Qpy8ad" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
           </div>
 
+<!--------------------------------------------------------------------------------------------------------------- -->
           <div id="ShaderContent" class="tabContent">
+            <div class="xlarge lightweight">HDRP Shader Diorama</div>
             <div class="medium lightweight infobar">
-              <div><span class="regularweight">Title: </span>Shader Diorama</div>
+              <div><span class="regularweight">Project: </span>Shader Programming</div>
               <div><span class="regularweight">Role: </span>Graphics Programmer</div>
-              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Engine: </span>Unity HDRP (HLSL)</div>
               <div><span class="regularweight">Year: </span>2023</div>
-            </div>
-          </div>
 
+            </div>
+          
+            <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFXFVPS3gg&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+  </iframe>
+  </div>
+</div>
+
+<!--------------------------------------------------------------------------------------------------------------- -->
           <div id="PortalContent" class="tabContent">
+            <div class="xlarge lightweight">Portal Rendering</div>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Title: </span>Unreal Mechanics Showcase</div>
               <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
@@ -143,6 +263,7 @@
 
     </div>
 
+    <!--------------------------------------------------------------------------------------------------------------- -->
     <script>
       document.getElementById("twtImage").addEventListener("click", function() {
         window.open("https://twitter.com/zacpeelyates", "_blank");
@@ -181,6 +302,12 @@
       document.getElementById("defaultOpen").click();
 
       </script>
+
+      <script src="pckg/prism.js"></script>
+
+      <footer style="opacity: 10%; color:whitesmoke; text-align: center; font-size: small;">
+        <p>Built poorly in html/css (I am not a web dev). Code snippets made with PrismJS. © 2023 Zac Peel-Yates. </p>
+      </footer>
 
   </body>
 </html>
