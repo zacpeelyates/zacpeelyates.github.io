@@ -27,7 +27,7 @@
         <div class="NavigationContainer">
           <button class = "tabLink" onClick="changeTab('AboutContent', this)"> <div class="lightweight" id = "defaultOpen">About Me</div></button>
           <button class = "tabLink" onclick="changeTab('StitchedUpContent', this)"> <div class="lightweight">Vehicle Physics</div></button>
-          <button class = "tabLink" onclick="changeTab('IRPContent', this)"> <div class= "lightweight">CCG Tools</div></button>
+          <button class = "tabLink" onclick="changeTab('IRPContent', this)"> <div class= "lightweight">Card Game Tool</div></button>
           <button class = "tabLink" onclick="changeTab('ShaderContent', this)"><div class ="lightweight">Shader Diorama</div></button>
           <button class = "tabLink" onclick="changeTab('RollbackContent', this)"><div class ="lightweight">Rollback Netcode</div></button>
           <!--<button class = "tabLink" onclick="changeTab('PortalContent', this)"><div class ="lightweight">Portal Rendering</div></button>-->
@@ -87,12 +87,16 @@
 
           <div id="AboutContent" class="tabContent">
             <div class="xlarge lightweight">About Me</div>
-               <p class="medium" style="line-height: 130%">Graduate games programmer, currently based in Bristol, England. <br>
-                Passionate about games as a player and developer. <br>
+               <p class="medium" style="line-height: 130%">Graduate games programmer, currently based in <span class="highlight"> Bristol, England. </span><br>
+                Passionate about games as a competitor and developer. <br>
                 Specialized in building and understanding tools and systems. <br>
                 Always looking to improve and develop myself, as well as the games I work on. <br>              
                </p>
-               <p class="medium"> second </p>
+               <p class="medium">Looking for opportunities to acquire industry experience, gain new skills, and refine existing competencies.
+                <br>5+ years of experience with Unity as a hobbyist and student, with a focus on gameplay programming and tools development.
+                <br>Currently in the process of relearning Unreal Engine, and also delving into Godot for the first time.
+               </p>
+
             </div>
   
             <!--------------------------------------------------------------------------------------------------------------- -->
@@ -188,12 +192,16 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
           <video src="static/vid/car.mp4" autoplay loop muted style="max-width: 50%;"></video>
             </div>
               <p class="medium">This project was showcased at COMX 2023, where it was played by members of the public.<br>Seeing others play our game and enjoy the mechanics and systems I created was a great experience.
+              <div style="display: flex; gap: 20px;">
+                <img src="static/img/comx.jpg" style="margin-top: 10px; max-width: 45%;">
+                <img src="static/img/comx5.jpg" style="margin-top: 10px; max-width: 45%;"></p>
+              </div>
               </div>
           </div>
 
 <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="IRPContent" class="tabContent">
-            <div class="xlarge lightweight">CCG Visual Scripting Tool</div>
+            <div class="xlarge lightweight">Card Game Visual Scripting Tool</div>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Project: </span>Dissertation</div>
               <div><span class="regularweight">Role: </span>Tools Programmer</div>
