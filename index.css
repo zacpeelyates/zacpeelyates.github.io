@@ -465,4 +465,16 @@
   {
     max-width: 95%;
   }
+
+  .tabLink
+  {
+    min-width: 140px;
+    max-width: max-content;
+    min-height: 50px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: var(--font-size-small);
+  
+  }
 }
