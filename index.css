@@ -133,6 +133,18 @@
   max-height: 50%;
 }
 
+.clickableHeader
+{
+  font-size: var(--font-size-xlarge);
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.clickableHeader:hover
+{
+  color: var(--color-palegreen-100);
+}
+
 .profile-button:hover
 {
   background-color: var(--color-palegreen-200-hover);
@@ -222,6 +234,11 @@
   overflow: hidden;
 }
 
+.highlightG
+{
+  color: var(--color-palegreen-100);
+}
+
 .NavigationContainer
 {
   display: flex;
@@ -288,7 +305,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-self: center;
-  gap: 40px;
+  gap: 30px;
   margin-right: 1vw;
 }
 

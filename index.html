@@ -26,7 +26,7 @@
         <div class="NavContentContainer">
         <div class="NavigationContainer">
           <button class = "tabLink" onClick="changeTab('AboutContent', this)"> <div class="lightweight" id = "defaultOpen">About Me</div></button>
-          <button class = "tabLink" onclick="changeTab('StitchedUpContent', this)"> <div class="lightweight">Vehicle Physics</div></button>
+          <button class = "tabLink" onclick="changeTab('StitchedUpContent', this)"> <div class="lightweight">Stitched Up</div></button>
           <button class = "tabLink" onclick="changeTab('IRPContent', this)"> <div class= "lightweight">Card Game Tool</div></button>
           <button class = "tabLink" onclick="changeTab('ShaderContent', this)"><div class ="lightweight">Shader Diorama</div></button>
           <button class = "tabLink" onclick="changeTab('RollbackContent', this)"><div class ="lightweight">Rollback Netcode</div></button>
@@ -96,12 +96,14 @@
                 <br>5+ years of experience with Unity as a hobbyist and student, with a focus on gameplay programming and tools development.
                 <br>Currently in the process of relearning Unreal Engine, and also delving into Godot for the first time.
                </p>
-
+               <p class="medium">This page currently contains only projects I am most proud of, ordered by recency.
+                <br>To view my other projects, please see my <span id="gitLink" class="highlightG" style="cursor: pointer;">github profile.</span>
+               </p>
             </div>
   
             <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="StitchedUpContent" class="tabContent">
-            <div class="xlarge lightweight">Vehicle Physics</div>
+            <span class="clickableHeader" id="stitchedUpLink">Stitched Up</span>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Title: </span>Stitched Up</div>
               <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
@@ -201,34 +203,137 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
 
 <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="IRPContent" class="tabContent">
-            <div class="xlarge lightweight">Card Game Visual Scripting Tool</div>
+            <span class="clickableHeader" id="repoIRP">Card Game Visual Scripting Tool</span>
             <div class="medium lightweight infobar">
-              <div><span class="regularweight">Project: </span>Dissertation</div>
+              <div><span class="regularweight">Project: </span>Individual Research</div>
               <div><span class="regularweight">Role: </span>Tools Programmer</div>
               <div><span class="regularweight">Engine: </span>Unity (C#)</div>
               <div><span class="regularweight">Year: </span>2023</div>
             </div>
 
             <p class="medium">For my final individual university project, I developed a bespoke visual scripting solution for implementing card effects in digital card games.
-              This included developing a custom node editor, as well as the logic and systems to interpret the graphs and execute the effects in-game.
+              This included developing a custom node editor using Unity's GraphView package and UI Builder, as well as the logic to interpret the graphs and execute effects in-game with events.
             </p>
-            <div style="position: relative; width: 100%; height: 0; padding-top: 70%;
+
+            <div style="display: flex; gap: 100px;" >
+              <pre style="max-height: 270px; max-width: 40%; line-height: 10%;overflow-wrap: normal;"><code class="language-csharp" style="font-size: x-small;">
+public void Populate(CardEffectTree effectTree)
+{
+    if (effectTree == null) return;
+    ClearElements();
+    CurrentTree = effectTree;
+    if (effectTree.nodes == null || !effectTree.nodes.Any()) return;
+
+    //Instantiate all nodes 
+    foreach (CardEffectNode node in effectTree.nodes)
+    {
+        VisualNode n = new(node, this);
+        AddElement(n);
+        n.UpdateDescription();
+    }
+
+    //Connect parents to children 
+    foreach (CardEffectNode parent in effectTree.nodes)
+    {
+        if (parent == null) continue;
+        VisualNode visualParent = GetVisualFromData(parent);
+        foreach (CardEffectNode child in parent.GetChildren())
+        {
+            if (child == null) continue;
+            child.parent = parent;
+            VisualNode visualChild = GetVisualFromData(child);
+            AddElement(visualParent.outputPort.ConnectTo(visualChild.inputPort));
+        }
+    }
+}
+
+private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
+{
+    //Remove Elements
+    if (graphViewChange.elementsToRemove != null)
+        foreach (GraphElement ge in graphViewChange.elementsToRemove)
+            if (ge is VisualNode visualNode)
+            {
+                CurrentTree.RemoveNode(visualNode.data);
+            }
+            else if (ge is Edge edge && edge.output.node is VisualNode parent &&
+                      edge.input.node is VisualNode child)
+            {
+                Undo.RecordObject(parent.data, "Remove Child");
+                parent.data.Remove(child.data);
+                child.data.parent = null;
+                EditorUtility.SetDirty(parent.data);
+            }
+
+    //Add Elements
+    if (graphViewChange.edgesToCreate != null)
+        foreach (Edge edge in graphViewChange.edgesToCreate)
+            if (edge.output.node is VisualNode parent && edge.input.node is VisualNode child)
+            {
+                Undo.RecordObject(parent.data, "Add Child");
+                parent.data.Add(child.data);
+                child.data.parent = parent.data;
+                EditorUtility.SetDirty(parent.data);
+            }
+
+    //Moved Elements
+    if (graphViewChange.movedElements != null) CurrentTree.SortTreeByNodeGraphPosition();
+
+    //Events
+    OnGraphViewChange?.Invoke();
+    CurrentTree.HandleKeywordData();
+    return graphViewChange;
+}
+
+public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+{
+    if (CurrentTree == null) return;
+    TypeCache.TypeCollection types = TypeCache.GetTypesDerivedFrom&lt;CardEffectNode>();
+    foreach (Type type in types)
+    {
+        if (type.IsAbstract) continue; //Don't instantiate abstract types 
+        evt.menu.AppendAction($"{type.BaseType?.Name}/{type.Name}", //create right click menu
+            _ =>  //invoke method when item selected 
+            {
+                MethodInfo method = CreateNodeMethodInfo.MakeGenericMethod(type);
+                method.Invoke(this, null);
+            });
+    }
+}
+
+//reflection method info 
+private static readonly MethodInfo CreateNodeMethodInfo =
+    typeof(CardEffectGraphView).GetMethod("CreateNode", BindingFlags.NonPublic | BindingFlags.Instance);
+
+//method that gets invoked with the generic type of selected node
+private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
+{
+    NodeType node = CurrentTree.CreateNode&lt;NodeType>();
+    if (node == null) return;
+    AddElement(new VisualNode(node, this));
+}</code></pre>
+  <img src="static/img/irpcontextmenu.png" style="padding-top: 15px; max-height: 335px; max-width: auto;"></img>
+</div>    
+
+<div style="position: relative; width: 100%; height: 0; padding-top: 70%;
  padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
  border-radius: 8px; will-change: transform;">
   <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
     src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFjFRBTycM&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
   </iframe>
-  </div>           
+  </div>   
+     
 </div>
 
 <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="RollbackContent" class="tabContent">
-            <div class="xlarge lightweight">Rollback Netcode</div>
+            <span class="clickableHeader" id="repoRollback">Rollback Netcode</span>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Project: </span>Game Engine Programming</div>
               <div><span class="regularweight">Role: </span>Network Programmer</div>
               <div><span class="regularweight">Engine: </span>Unity (C#)</div>
               <div><span class="regularweight">Year: </span>2022</div>
+
             </div>
             <p class="medium">While this project is older than the others, it is something I am very proud of creating. <br>An explanation, implementation & demonstration of Rollback Networking within Unity.
               <br><br>The video below has had overwhelmingly positive feedback from people looking for resources on the topic, and I earned 100/100 marks on the assignment.
@@ -238,7 +343,7 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
 
 <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="ShaderContent" class="tabContent">
-            <div class="xlarge lightweight">HDRP Shader Diorama</div>
+            <span class="clickableHeader" id="repoShader">HDRP Shader Diorama</span>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Project: </span>Shader Programming</div>
               <div><span class="regularweight">Role: </span>Graphics Programmer</div>
@@ -247,6 +352,10 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
 
             </div>
           
+            <p class="medium">Below are the slides from a university presentation created for the graphics programming module, developed in Unity's HD Render Pipline.
+              The project contains effects created in HLSL and Shadergraph, with code samples included alongside the visuals in the presentation. 
+              <br>In the future I would like to explore graphics programming further, including the use of Compute Shaders.</p>
+
             <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
  padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
  border-radius: 8px; will-change: transform;">
@@ -282,6 +391,11 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
       document.getElementById("gitImage").addEventListener("click", function() {
         window.open("https://github.com/zacpeelyates", "_blank");
       });
+
+      document.getElementById("gitLink").addEventListener("click", function() {
+        window.open("https://github.com/zacpeelyates", "_blank");
+      });  
+
       document.getElementById("lnkImage").addEventListener("click", function() {
         window.open("https://linkedin.com/in/zac-peel-yates", "_blank");
       });
@@ -296,6 +410,24 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
       document.getElementById("cvButton").addEventListener("click", function() {
         window.open("./static/pdf/cv.pdf", "_blank");
       }); 
+
+      document.getElementById("repoRollback").addEventListener("click", function() {
+        window.open("https://github.com/zacpeelyates/unityrollback", "_blank");
+      }); 
+
+      document.getElementById("repoShader").addEventListener("click", function() {
+        window.open("https://github.com/zacpeelyates/HDRP-Shader-Diorama", "_blank");
+      }); 
+
+      document.getElementById("repoIRP").addEventListener("click", function() {
+        window.open("https://github.com/zacpeelyates/CCG-Visual-Scripting-Demo", "_blank");
+      }); 
+
+      document.getElementById("stitchedUpLink").addEventListener("click",function() {
+        window.open("https://comx.uogs.co.uk/23/teams/patchwork-games/","_blank");
+      })
+
+
 
       
       function PauseAllYoutubeIframes()
