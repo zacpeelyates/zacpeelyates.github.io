@@ -112,11 +112,15 @@
             </div>
             <div class="medium">
             <p>Developed in a team of six for our final assignment at university, 'Stitched Up' is a party game where players are tasked with creating and defending their territory in a chaotic battle between souped-up sewing karts. 
-            </p>           
-            <iframe style="display: block; margin: auto; text-align: center;"  width="640" height="360" src="https://www.youtube.com/embed/7h2o6eY-vkk?enablejsapi=1" title="Stitched Up! -- COMX 2023 Trailer" frameborder="0" allow=" accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </p>    
+            
+            <div class="ytContainer">
+            <iframe src="https://www.youtube.com/embed/7h2o6eY-vkk?enablejsapi=1" title="Stitched Up! -- COMX 2023 Trailer" frameborder="0" allow=" accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+
             <p>As the lead gameplay programmer for the project, I created the vehicle physics alongside other core gameplay systems such as input handling, powerups, and combat mechanics.</p>
-            <div style="display: flex; gap: 20px;" >
-            <pre style="max-height: 270px; max-width: 40%; line-height: 10%;overflow-wrap: normal;"><code class="language-csharp" style="font-size: x-small;">public static void SuspensionForce(Transform wheel, RaycastHit[] hits, 
+            <div style="display: flex; gap: 20px;" class="sample-container" >
+            <pre class="codePreview" style="line-height: 10%;"><code class="language-csharp" style="font-size: x-small;">public static void SuspensionForce(Transform wheel, RaycastHit[] hits, 
                                       CarSettings settings, Rigidbody rb)
 {
   float velocity = Vector3.Dot(rb.GetPointVelocity(wheel.position), wheel.up);
@@ -191,7 +195,7 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
   rb.AddForceAtPosition(dampening * settings.Acceleration * result, wheel.position, 
                                                             ForceMode.Acceleration); 
 }</code></pre>
-          <video src="static/vid/car.mp4" autoplay loop muted style="max-width: 50%;"></video>
+          <video src="static/vid/car.mp4" autoplay loop muted class="previewVideo"></video>
             </div>
               <p class="medium">This project was showcased at COMX 2023, where it was played by members of the public.<br>Seeing others play our game and enjoy the mechanics and systems I created was a great experience.
               <div style="display: flex; gap: 20px;">
@@ -203,7 +207,7 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
 
 <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="IRPContent" class="tabContent">
-            <span class="clickableHeader" id="repoIRP">Card Game Visual Scripting Tool</span>
+            <span class="clickableHeader" id="repoIRP">Card Game Visual Scripting</span>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Project: </span>Individual Research</div>
               <div><span class="regularweight">Role: </span>Tools Programmer</div>
@@ -215,8 +219,8 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
               This included developing a custom node editor using Unity's GraphView package and UI Builder, as well as the logic to interpret the graphs and execute effects in-game with events.
             </p>
 
-            <div style="display: flex; gap: 100px;" >
-              <pre style="max-height: 270px; max-width: 40%; line-height: 10%;overflow-wrap: normal;"><code class="language-csharp" style="font-size: x-small;">
+            <div style="display: flex; gap: 20px;" class="sample-container" >
+              <pre class="codePreview" style="line-height: 10%;"><code class="language-csharp" style="font-size: x-small;">
 public void Populate(CardEffectTree effectTree)
 {
     if (effectTree == null) return;
@@ -338,8 +342,11 @@ private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
             <p class="medium">While this project is older than the others, it is something I am very proud of creating. <br>An explanation, implementation & demonstration of Rollback Networking within Unity.
               <br><br>The video below has had overwhelmingly positive feedback from people looking for resources on the topic, and I earned 100/100 marks on the assignment.
               I am a huge fan of fighting games and rollback has revolutionized the way they are played online.</p>
-            <iframe style="display: block; margin: auto; text-align: center;" width="960" height="540" src="https://www.youtube.com/embed/lCfouAH_N5w?si=ysLsLZH2H0Qpy8ad?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-          </div>
+              <div class="ytContainer">
+              <iframe  src="https://www.youtube.com/embed/lCfouAH_N5w?si=ysLsLZH2H0Qpy8ad?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+              </div>
+            </div>
+
 
 <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="ShaderContent" class="tabContent">
