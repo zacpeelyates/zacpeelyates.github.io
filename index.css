@@ -178,6 +178,8 @@
   min-width: 15%;
   max-width: 20%;
   min-height: fit-content;
+  max-height: 500px;
+  
 }
 
 .profile:hover {
