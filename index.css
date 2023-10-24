@@ -101,7 +101,7 @@
 .buttontext {
   position: relative;
   font-size: var(--font-size-medium);
-  font-family: var(--font-roboto);
+  font-family: var(--font-inter);
   color: var(--color-palegreen-100);
   text-align: center;
   max-width: 50%;
@@ -236,7 +236,7 @@
   gap: var(--gap-3xs);
   text-align: left;
   color: var(--color-whitesmoke);
-  font-family: var(--font-roboto);
+  font-family: var(--font-inter);
   font-size: var(--font-size-large);
 }
 
@@ -265,7 +265,7 @@
 
 .tabLink {
   font-size: var(--font-size-medium);
-  font-family: var(--font-roboto);
+  font-family: var(--font-inter);
   text-justify: center;
   text-align: center;
   background-color: transparent;
