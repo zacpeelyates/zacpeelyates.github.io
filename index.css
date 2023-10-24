@@ -137,8 +137,8 @@
 }
 
 .codePreview {
-  max-height: 270px;
-  max-width: 40%;
+  max-height: 355px;
+  max-width: 50%;
   overflow-wrap: normal;
 }
 
@@ -178,8 +178,8 @@
   min-width: 15%;
   max-width: 20%;
   min-height: fit-content;
-  max-height: 500px;
-  
+  max-height: 525px;
+
 }
 
 .profile:hover {
@@ -375,6 +375,8 @@
   }
 
   .sample-container {
+    display: flex;
+    gap: 20px;
     flex-direction: column;
   }
 

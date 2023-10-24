@@ -1,86 +1,82 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <link rel="stylesheet" href="./global.css" />
-    <link rel="stylesheet" href="./index.css" />
-    <link rel="stylesheet" href="pckg/prism.css">
-    <link rel="stylesheet"href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"/>
-  </head>
-  <body>
-    
-    <div class="landingpage">
 
-      <div class="xlarge header">
-          <div class = "lightweight">Hi, I’m <span class="highlight regularweight">Zac.</span> Let's make games.</div> 
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="pckg/prism.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" />
+</head>
 
-          <div class = "medium">  
-          <span class = "regularweight">First-Class</span> Graduate in Games Programming<br>
-          <span class = "regularweight">TIGA</span> Outstanding Programming Graduate '23
-          </div>    
+<body>
+
+  <div class="landingpage">
+
+    <div class="xlarge header">
+      <div class="lightweight">Hi, I’m <span class="highlight regularweight">Zac.</span> Let's make games.</div>
+
+      <div class="medium">
+        <span class="regularweight">First-Class</span> Graduate in Games Programming<br>
+        <span class="regularweight">TIGA</span> Outstanding Programming Graduate '23
       </div>
+    </div>
 
-      <div class="content">
+    <div class="content">
 
-        <div class="NavContentContainer">
+      <div class="NavContentContainer">
         <div class="NavigationContainer">
-          <button class = "tabLink" onClick="changeTab('AboutContent', this)"> <div class="lightweight" id = "defaultOpen">About Me</div></button>
-          <button class = "tabLink" onclick="changeTab('StitchedUpContent', this)"> <div class="lightweight">Stitched Up</div></button>
-          <button class = "tabLink" onclick="changeTab('IRPContent', this)"> <div class= "lightweight">Card Game Tool</div></button>
-          <button class = "tabLink" onclick="changeTab('ShaderContent', this)"><div class ="lightweight">Shader Diorama</div></button>
-          <button class = "tabLink" onclick="changeTab('RollbackContent', this)"><div class ="lightweight">Rollback Netcode</div></button>
-          <button class = "tabLink" onclick="changeTab('PortalContent', this)"><div class ="lightweight">UE4 Portals</div></button>
-          <button class = "tabLink" onclick="changeTab('BoidContent', this)"><div class ="lightweight">C++ Boid Engine</div></button>
+          <button class="tabLink" onClick="changeTab('AboutContent', this)">
+            <div class="lightweight" id="defaultOpen">About Me</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('StitchedUpContent', this)">
+            <div class="lightweight">Stitched Up</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('IRPContent', this)">
+            <div class="lightweight">Card Game Tool</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('ShaderContent', this)">
+            <div class="lightweight">Shader Diorama</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('RollbackContent', this)">
+            <div class="lightweight">Rollback Netcode</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('PortalContent', this)">
+            <div class="lightweight">UE4 Portals</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('BoidContent', this)">
+            <div class="lightweight">C++ Boid Engine</div>
+          </button>
         </div>
-    
+
         <div class="TabContentContainer">
           <div class="profile">
             <img class="hslayout-icon" alt="" src="./static/img/hslayout@2x.png" />
-    
+
             <div class="icons">
               <!--<a href="https://twitter.com/zacpeelyates" target="_blank">-->
-                <img
-                  class="icon"
-                  alt="twitter"
-                  src="./static/img/twt.svg"
-                  id="twtImage"
-                />
-    
+              <img class="icon" alt="twitter" src="./static/img/twt.svg" id="twtImage" />
+
               <!--<a href="https://github.com/zacpeelyates" target="_blank">-->
-                <img
-                  class="icon"
-                  alt="github"
-                  src="./static/img/git.svg"
-                  id="gitImage"
-                />
-    
-                <!--<a href="https://linkedin.com/in/zac-peel-yates" target="_blank">-->
-                <img
-                  class="icon"
-                  alt="linkedin"
-                  src="./static/img/lnk.svg"
-                  id="lnkImage"
-                />
-    
-                <!--<a href="https://www.youtube.com/@zacpeel-yates7276" target="_blank">-->
-                  <img
-                    class="icon"
-                    alt="youtube"
-                    src="./static/img/yt.svg"
-                    id="ytImage"
-                  />
+              <img class="icon" alt="github" src="./static/img/git.svg" id="gitImage" />
+
+              <!--<a href="https://linkedin.com/in/zac-peel-yates" target="_blank">-->
+              <img class="icon" alt="linkedin" src="./static/img/lnk.svg" id="lnkImage" />
+
+              <!--<a href="https://www.youtube.com/@zacpeel-yates7276" target="_blank">-->
+              <img class="icon" alt="youtube" src="./static/img/yt.svg" id="ytImage" />
             </div>
             <div class="buttons">
               <!--<a href="mailto:zacpeelyates@gmail.com" target="_blank">-->
-                  <button class="profile-button" id="contactButton">
-                    <div class="buttontext" >contact</div>
-                  </button>
+              <button class="profile-button" id="contactButton">
+                <div class="buttontext">contact</div>
+              </button>
               <!--<a href="./static/pdf/cv.pdf" target="_blank">-->
-                <button class="profile-button" id="cvButton">
-                  <div class="buttontext">résumé</div>
-    
-                </button>
+              <button class="profile-button" id="cvButton">
+                <div class="buttontext">résumé</div>
+
+              </button>
             </div>
           </div>
 
@@ -88,21 +84,26 @@
 
           <div id="AboutContent" class="tabContent">
             <div class="xlarge lightweight">About Me</div>
-               <p class="medium" style="line-height: 130%">Graduate games programmer, currently based in <span class="highlight"> Bristol, England. </span><br>
-                Passionate about games as a competitor and developer. <br>
-                Specialized in building and understanding tools and systems. <br>
-                Always looking to improve and develop myself, as well as the games I work on. <br>              
-               </p>
-               <p class="medium">Looking for opportunities to acquire industry experience, gain new skills, and refine existing competencies.
-                <br>5+ years of experience with Unity as a hobbyist and student, with a focus on gameplay programming and tools development.
-                <br>Currently in the process of relearning Unreal Engine, and also delving into Godot for the first time.
-               </p>
-               <p class="medium">This page currently contains only projects I am most proud of, ordered by recency.
-                <br>To view my other projects, please see my <span id="gitLink" class="highlightG" style="cursor: pointer;">github profile.</span>
-               </p>
-            </div>
-  
-            <!--------------------------------------------------------------------------------------------------------------- -->
+            <p class="medium" style="line-height: 130%">Graduate games programmer, currently based in <span
+                class="highlight"> Bristol, England. </span><br>
+              Passionate about games as a competitor and developer. <br>
+              Specialized in building and understanding tools and systems. <br>
+              Always looking to improve and develop myself, as well as the games I work on. <br>
+            </p>
+            <p class="medium">Looking for opportunities to acquire industry experience, gain new skills, and refine
+              existing competencies.
+              <br>5+ years of experience with Unity as a hobbyist and student, with a focus on gameplay programming and
+              tools development.
+              <br>Currently in the process of relearning Unreal Engine, and also delving into Godot for the first time.
+            </p>
+            <p class="medium">This page currently contains only projects I am most proud of, ordered by recency.
+              <br>To view my other projects, please see my <span id="gitLink" class="highlightG"
+                style="cursor: pointer;">github profile.</span><br>Click the header of each section to access the
+              corresponding repository.
+            </p>
+          </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="StitchedUpContent" class="tabContent">
             <span class="clickableHeader" id="stitchedUpLink">Stitched Up</span>
             <div class="medium lightweight infobar">
@@ -112,16 +113,22 @@
               <div><span class="regularweight">Year: </span>2023</div>
             </div>
             <div class="medium">
-            <p>Developed in a team of six for our final assignment at university, 'Stitched Up' is a party game where players are tasked with creating and defending their territory in a chaotic battle between souped-up sewing karts. 
-            </p>    
-            
-            <div class="ytContainer">
-            <iframe src="https://www.youtube.com/embed/7h2o6eY-vkk?enablejsapi=1" title="Stitched Up! -- COMX 2023 Trailer" frameborder="0" allow=" accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
+              <p>Developed in a team of six for our final assignment at university, 'Stitched Up' is a party game where
+                players are tasked with creating and defending their territory in a chaotic battle between souped-up
+                sewing karts.
+              </p>
 
-            <p>As the lead gameplay programmer for the project, I created the vehicle physics alongside other core gameplay systems such as input handling, powerups, and combat mechanics.</p>
-            <div style="display: flex; gap: 20px;" class="sample-container" >
-            <pre class="codePreview" style="line-height: 10%;"><code class="language-csharp" style="font-size: x-small;">public static void SuspensionForce(Transform wheel, RaycastHit[] hits, 
+              <div class="ytContainer">
+                <iframe src="https://www.youtube.com/embed/7h2o6eY-vkk?enablejsapi=1"
+                  title="Stitched Up! -- COMX 2023 Trailer" frameborder="0"
+                  allow=" accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+
+              <p>As the lead gameplay programmer for the project, I created the vehicle physics alongside other core
+                gameplay systems such as input handling, powerups, and combat mechanics.</p>
+              <div style="display: flex; gap: 20px;" class="sample-container">
+                <pre class="codePreview" style="line-height: 10%;"><code class="language-csharp" style="font-size: x-small;">public static void SuspensionForce(Transform wheel, RaycastHit[] hits, 
                                       CarSettings settings, Rigidbody rb)
 {
   float velocity = Vector3.Dot(rb.GetPointVelocity(wheel.position), wheel.up);
@@ -196,17 +203,19 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
   rb.AddForceAtPosition(dampening * settings.Acceleration * result, wheel.position, 
                                                             ForceMode.Acceleration); 
 }</code></pre>
-          <video src="static/vid/car.mp4" autoplay loop muted class="previewVideo"></video>
-            </div>
-              <p class="medium">This project was showcased at COMX 2023, where it was played by members of the public.<br>Seeing others play our game and enjoy the mechanics and systems I created was a great experience.
+                <video src="static/vid/car.mp4" autoplay loop muted class="previewVideo"></video>
+              </div>
+              <p class="medium">This project was showcased at COMX 2023, where it was played by members of the
+                public.<br>Seeing others play our game and enjoy the mechanics and systems I created was a great
+                experience.
               <div style="display: flex; gap: 20px;">
                 <img src="static/img/comx.jpg" style="margin-top: 10px; max-width: 45%;">
                 <img src="static/img/comx5.jpg" style="margin-top: 10px; max-width: 45%;"></p>
               </div>
-              </div>
+            </div>
           </div>
 
-<!--------------------------------------------------------------------------------------------------------------- -->
+          <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="IRPContent" class="tabContent">
             <span class="clickableHeader" id="repoIRP">Card Game Visual Scripting</span>
             <div class="medium lightweight infobar">
@@ -216,12 +225,14 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
               <div><span class="regularweight">Year: </span>2023</div>
             </div>
 
-            <p class="medium">For my final individual university project, I developed a bespoke visual scripting solution for implementing card effects in digital card games.
-              This included developing a custom node editor using Unity's GraphView package and UI Builder, as well as the logic to interpret the graphs and execute effects in-game with events.
+            <p class="medium">For my final individual university project, I developed a bespoke visual scripting
+              solution for implementing card effects in digital card games.
+              This included developing a custom node editor using Unity's GraphView package and UI Builder, as well as
+              the logic to interpret the graphs and execute effects in-game with events.
             </p>
 
-            <div style="display: flex; gap: 20px;" class="sample-container" >
-              <pre class="codePreview" style="line-height: 10%;"><code class="language-csharp" style="font-size: x-small;">
+            <div class="sample-container" style="display: flex; gap: 50px; margin-left: 50px; margin-right: 50px;">
+              <pre class="codePreview" style="line-height: 10%; max-height: auto;"><code class="language-csharp" style="font-size: x-small;">
 public void Populate(CardEffectTree effectTree)
 {
     if (effectTree == null) return;
@@ -317,20 +328,22 @@ private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
     if (node == null) return;
     AddElement(new VisualNode(node, this));
 }</code></pre>
-  <img src="static/img/irpcontextmenu.png" style="padding-top: 15px; max-height: 335px; max-width: auto;"></img>
-</div>    
+              <img src="static/img/irpcontextmenu.png" style="max-width: 50%; max-height: auto;"></img>
+            </div>
 
-<div style="position: relative; width: 100%; height: 0; padding-top: 70%;
+            <div style="position: relative; width: 100%; height: 0; padding-top: 70%;
  padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
  border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFjFRBTycM&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-  </div>   
-     
-</div>
+              <iframe loading="lazy"
+                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFjFRBTycM&#x2F;view?embed"
+                allowfullscreen="allowfullscreen" allow="fullscreen">
+              </iframe>
+            </div>
 
-<!--------------------------------------------------------------------------------------------------------------- -->
+          </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="RollbackContent" class="tabContent">
             <span class="clickableHeader" id="repoRollback">Rollback Netcode</span>
             <div class="medium lightweight infobar">
@@ -340,16 +353,22 @@ private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
               <div><span class="regularweight">Year: </span>2022</div>
 
             </div>
-            <p class="medium">While this project is older than the others, it is something I am very proud of creating. <br>An explanation, implementation & demonstration of Rollback Networking within Unity.
-              <br><br>The video below has had overwhelmingly positive feedback from people looking for resources on the topic, and I earned 100/100 marks on the assignment.
-              I am a huge fan of fighting games and rollback has revolutionized the way they are played online.</p>
-              <div class="ytContainer">
-              <iframe  src="https://www.youtube.com/embed/lCfouAH_N5w?si=ysLsLZH2H0Qpy8ad?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-              </div>
+            <p class="medium">This project is a favourite of mine.
+              <br>An explanation, implementation & demonstration of Rollback Networking within Unity.
+              <br><br>The video below has had overwhelmingly positive feedback from people looking for resources on the
+              topic, and I earned 100/100 marks on the assignment.
+              I am a huge fan of fighting games and rollback has revolutionized the way they are played online.
+            </p>
+            <div class="ytContainer">
+              <iframe src="https://www.youtube.com/embed/lCfouAH_N5w?si=ysLsLZH2H0Qpy8ad?enablejsapi=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
             </div>
+          </div>
 
 
-<!--------------------------------------------------------------------------------------------------------------- -->
+          <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="ShaderContent" class="tabContent">
             <span class="clickableHeader" id="repoShader">HDRP Shader Diorama</span>
             <div class="medium lightweight infobar">
@@ -359,23 +378,29 @@ private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
               <div><span class="regularweight">Year: </span>2023</div>
 
             </div>
-          
-            <p class="medium">Below are the slides from a university presentation created for the graphics programming module, developed in Unity's HD Render Pipline.
-              The project contains effects created in HLSL and Shadergraph, with code samples included alongside the visuals in the presentation. 
-              <br>In the future I would like to explore graphics programming further, including the use of Compute Shaders.</p>
+
+            <p class="medium">Below are the slides from a university presentation created for the graphics programming
+              module, developed in Unity's HD Render Pipline.
+              The project contains effects created in HLSL and Shadergraph, with code samples included alongside the
+              visuals in the presentation.
+              <br>In the future I would like to explore graphics programming further, including the use of Compute
+              Shaders.
+            </p>
 
             <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
  padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
  border-radius: 8px; will-change: transform;">
-  <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
-    src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFXFVPS3gg&#x2F;view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
-  </iframe>
-  </div>
-</div>
+              <iframe loading="lazy"
+                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFXFVPS3gg&#x2F;view?embed"
+                allowfullscreen="allowfullscreen" allow="fullscreen">
+              </iframe>
+            </div>
+          </div>
 
-<!--------------------------------------------------------------------------------------------------------------- -->
+          <!--------------------------------------------------------------------------------------------------------------- -->
           <div id="PortalContent" class="tabContent">
-            <div class="xlarge lightweight">Portal Rendering</div>
+            <div class="clickableHeader" id="repoPortal">Portal Rendering</div>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Title: </span>Unreal Mechanics Showcase</div>
               <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
@@ -383,9 +408,12 @@ private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
               <div><span class="regularweight">Year: </span>2022</div>
             </div>
 
-            <p class="medium">As part of an Unreal Engine 4 mechanics showcase, I created a custom portal system alongside a character controller. The portals make use of render textures and a lot of math to create an illusion of a portal.</p>
-
-        <pre class="codePreview" style="line-height: 10%; max-width: 100%;"><code class="language-cpp" style="font-size: x-small;">
+            <p class="medium">As part of an Unreal Engine 4 mechanics showcase, I created a custom portal system
+              alongside a character controller. The portals make use of render textures and a lot of math to create an
+              illusion of a portal. They can handle both the player and interactable objects travelling through them.
+            </p>
+            <div class="sample-container" style="display: flex; gap: 20px;">
+              <pre class="codePreview" style="line-height: 10%; max-width: 50%; max-height: 340px;"><code class="language-cpp" style="font-size: x-small;">
 void APortalManager::UpdatePortalView(APortalActor* Portal)
 {
   Portal->GetSceneCaptureComponent()->Activate();
@@ -423,7 +451,7 @@ void APortalManager::UpdatePortalView(APortalActor* Portal)
     {
       Rot.Pitch = 0.0f;
       Rot.Roll = 0.0f;
-      const ACharacter* c = static_cast<ACharacter*>(TargetActor);
+      const ACharacter* c = static_cast&lt;ACharacter*>(TargetActor);
       c->GetController()->SetControlRotation(Rot);
     }
 
@@ -472,106 +500,167 @@ FRotator PortalUtils::ConvertRotationToLocalSpace(FRotator Rotation, AActor* Cur
   return ReturnRot;
 }
               </code></pre>
-              <video src="static/vid/portal.mp4" autoplay loop muted class="previewVideo"></video>
-            </div>
 
-<!--------------------------------------------------------------------------------------------------------------- -->
-<div id="BoidContent" class="tabContent">
-  <div class="xlarge lightweight">Boid ECS Engine</div>
-  <div class="medium lightweight infobar">
-    <div><span class="regularweight">Project: </span>OpenGL Boids</div>
-    <div><span class="regularweight">Role: </span>Engine Programmer</div>
-    <div><span class="regularweight">Engine: </span>Custom</div>
-    <div><span class="regularweight">Year: </span>2022</div>
-  </div>
-        <p class = "medium">Boids implementation within a custom C++ engine created using OpenGL, GLAD, GLFW and Dear ImGui. The engine makes use of a custom Entity-Component system to handle object behaviours.</p>
-        <video src="static/vid/car.mp4" autoplay loop muted class="previewVideo"></video>
+              <video src="static/vid/portal.mp4" autoplay loop muted class="previewVideo"
+                style="max-width: 50%;"></video>
+            </div>
+          </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
+          <div id="BoidContent" class="tabContent">
+            <div class="clickableHeader" id="repoBoids">Boid ECS Engine</div>
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Project: </span>OpenGL Boids</div>
+              <div><span class="regularweight">Role: </span>Engine Programmer</div>
+              <div><span class="regularweight">Engine: </span>Custom</div>
+              <div><span class="regularweight">Year: </span>2022</div>
+            </div>
+            <p class="medium">Boids implementation within a custom C++ engine created using OpenGL, GLAD, GLFW and
+              Dear
+              ImGui. The engine makes use of a custom Entity-Component system to handle object behaviours, and is
+              optimized using Binary Space Partitioning.</p>
+            <div class="sample-container" style="display: flex; gap: 20px;">
+              <pre class="codePreview" style="line-height: 10%; max-width: 50%; max-height: 340px;"><code class="language-cpp" style="font-size: x-small;">
+auto Flock::CalculateForce(Transform* a_transform, std::vector<GameObject*>* a_neighbourPointer) -> glm::vec3
+{
+  if (a_neighbourPointer == nullptr) return glm::vec3(0); //early out
+  unsigned int neighbourCount = 0;
+  glm::vec3 localPos = a_transform->GetRow(POS_VEC);
+  glm::vec3 fwdVec = a_transform->GetRow(FWD_VEC);
+
+  glm::vec3 seperation(0);
+  glm::vec3 alignment(0);
+  glm::vec3 cohesion(0);
+
+  for (GameObject* other : *a_neighbourPointer)
+  {
+      Transform* otherT = other->GetComponent&lt;Transform>().get();
+      if (otherT == a_transform)
+      {
+        continue; //we are looking at ourselves get out early
+      }
+      glm::vec3 otherPos = otherT->GetRow(POS_VEC);
+      glm::vec3 toOther = otherPos - localPos;
+  
+  
+      if (dot(fwdVec, normalize(toOther)) &lt; 0.7F /* look angle */ && length(toOther) &lt; s_neighbourhoodRaidus) 
+      { //boid is in our neighbourhood 
         
+        neighbourCount++; 
+        seperation +=toOther * -1; //toLocal
+          cohesion +=otherPos; 
+          alignment+=other->GetComponent&lt;BoidBehaviour>()->GetVelocity();
+      }
+  }
+
+  if (neighbourCount == 0)
+  {
+      return glm::vec3(0);
+  }
+
+  for (glm::vec3 v : {seperation, alignment, cohesion})
+  {
+     v /= neighbourCount;
+     if (length(v) != 0.0f)
+     {
+       v = normalize(v);
+     }
+  }
+  return seperation + alignment + cohesion; //total our forces
+}
+            </pre></code>
+              <video src="static/vid/boids.mp4" autoplay loop muted class="previewVideo"
+                style="max-width: 50%;"></video>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
     <!--------------------------------------------------------------------------------------------------------------- -->
     <script>
-      document.getElementById("twtImage").addEventListener("click", function() {
+      document.getElementById("twtImage").addEventListener("click", function () {
         window.open("https://twitter.com/zacpeelyates", "_blank");
       });
-      document.getElementById("gitImage").addEventListener("click", function() {
+      document.getElementById("gitImage").addEventListener("click", function () {
         window.open("https://github.com/zacpeelyates", "_blank");
       });
 
-      document.getElementById("gitLink").addEventListener("click", function() {
+      document.getElementById("gitLink").addEventListener("click", function () {
         window.open("https://github.com/zacpeelyates", "_blank");
-      });  
+      });
 
-      document.getElementById("lnkImage").addEventListener("click", function() {
+      document.getElementById("lnkImage").addEventListener("click", function () {
         window.open("https://linkedin.com/in/zac-peel-yates", "_blank");
       });
-      document.getElementById("ytImage").addEventListener("click", function() {
+      document.getElementById("ytImage").addEventListener("click", function () {
         window.open("https://www.youtube.com/@zacpeel-yates7276", "_blank");
       });
 
-      document.getElementById("contactButton").addEventListener("click", function() {
+      document.getElementById("contactButton").addEventListener("click", function () {
         window.open("mailto:zacpeelyates@gmail.com", "_blank");
       });
 
-      document.getElementById("cvButton").addEventListener("click", function() {
+      document.getElementById("cvButton").addEventListener("click", function () {
         window.open("./static/pdf/cv.pdf", "_blank");
-      }); 
+      });
 
-      document.getElementById("repoRollback").addEventListener("click", function() {
+      document.getElementById("repoRollback").addEventListener("click", function () {
         window.open("https://github.com/zacpeelyates/unityrollback", "_blank");
-      }); 
+      });
 
-      document.getElementById("repoShader").addEventListener("click", function() {
+      document.getElementById("repoShader").addEventListener("click", function () {
         window.open("https://github.com/zacpeelyates/HDRP-Shader-Diorama", "_blank");
-      }); 
+      });
 
-      document.getElementById("repoIRP").addEventListener("click", function() {
+      document.getElementById("repoIRP").addEventListener("click", function () {
         window.open("https://github.com/zacpeelyates/CCG-Visual-Scripting-Demo", "_blank");
-      }); 
+      });
 
-      document.getElementById("stitchedUpLink").addEventListener("click",function() {
-        window.open("https://comx.uogs.co.uk/23/teams/patchwork-games/","_blank");
+      document.getElementById("repoPortal").addEventListener("click", function () {
+        window.open("https://github.com/zacpeelyates/unrealmechanics", "_blank");
+      });
+
+      document.getElementById("repoBoids").addEventListener("click", function () {
+        window.open("https://github.com/zacpeelyates/boidengine", "_blank");
+      });
+
+      document.getElementById("stitchedUpLink").addEventListener("click", function () {
+        window.open("https://comx.uogs.co.uk/23/teams/patchwork-games/", "_blank");
       })
 
 
 
-      
-      function PauseAllYoutubeIframes()
-      {
+
+      function PauseAllYoutubeIframes() {
         var iframes = document.getElementsByTagName("iframe");
-        for(var i = 0; i < iframes.length; i++)
-        {
+        for (var i = 0; i < iframes.length; i++) {
           iframes[i].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
         }
       }
 
 
-      function changeTab(tabName, tabElement)
-      {
+      function changeTab(tabName, tabElement) {
         var i, tabcontent, tablinks, videos;
         tabcontent = document.getElementsByClassName("tabContent");
-        for(i = 0; i < tabcontent.length; i++)
-        {
+        for (i = 0; i < tabcontent.length; i++) {
           tabcontent[i].style.display = "none";
         }
         tablinks = document.getElementsByClassName("tabLink");
-        PauseAllYoutubeIframes();      
+        PauseAllYoutubeIframes();
         document.getElementById(tabName).style.display = "block";
       }
 
       document.getElementById("defaultOpen").click();
 
-      </script>
+    </script>
 
-      <script src="pckg/prism.js"></script>
+    <script src="pckg/prism.js"></script>
 
-      <footer style="opacity: 10%; color:whitesmoke; text-align: center; font-size: small;">
-        <p>Built poorly in html/css (I am not a web dev). Code snippets made with PrismJS. © 2023 Zac Peel-Yates. </p>
-      </footer>
+    <footer style="opacity: 10%; color:whitesmoke; text-align: center; font-size: small;">
+      <p>Built poorly in html/css (I am not a web dev). Code snippets made with PrismJS. © 2023 Zac Peel-Yates. </p>
+    </footer>
 
-  </body>
+</body>
+
 </html>
