@@ -30,7 +30,8 @@
           <button class = "tabLink" onclick="changeTab('IRPContent', this)"> <div class= "lightweight">Card Game Tool</div></button>
           <button class = "tabLink" onclick="changeTab('ShaderContent', this)"><div class ="lightweight">Shader Diorama</div></button>
           <button class = "tabLink" onclick="changeTab('RollbackContent', this)"><div class ="lightweight">Rollback Netcode</div></button>
-          <!--<button class = "tabLink" onclick="changeTab('PortalContent', this)"><div class ="lightweight">Portal Rendering</div></button>-->
+          <button class = "tabLink" onclick="changeTab('PortalContent', this)"><div class ="lightweight">UE4 Portals</div></button>
+          <button class = "tabLink" onclick="changeTab('BoidContent', this)"><div class ="lightweight">C++ Boid Engine</div></button>
         </div>
     
         <div class="TabContentContainer">
@@ -379,16 +380,116 @@ private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
               <div><span class="regularweight">Title: </span>Unreal Mechanics Showcase</div>
               <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
               <div><span class="regularweight">Engine: </span>Unreal (C++)</div>
-              <div><span class="regularweight">Year: </span>2021</div>
+              <div><span class="regularweight">Year: </span>2022</div>
             </div>
-          </div>
-      </div>
 
+            <p class="medium">As part of an Unreal Engine 4 mechanics showcase, I created a custom portal system alongside a character controller. The portals make use of render textures and a lot of math to create an illusion of a portal.</p>
+
+        <pre class="codePreview" style="line-height: 10%; max-width: 100%;"><code class="language-cpp" style="font-size: x-small;">
+void APortalManager::UpdatePortalView(APortalActor* Portal)
+{
+  Portal->GetSceneCaptureComponent()->Activate();
+  APortalActor* LinkedPortal = Portal->GetLinkedPortal();
+    if (LinkedPortal != nullptr)
+    {
+    
+      const UCameraComponent* PlayerCam = PlayerCon->CameraPawn->GetActiveCamera();
+      USceneCaptureComponent2D* LinkedSceneCapture = LinkedPortal->GetSceneCaptureComponent();
+      LinkedSceneCapture->Activate();
+
+      //get back-facing transform of the portal-to-enter
+      FTransform ReversePortal = Portal->GetActorTransform();
+      FRotator Rot = ReversePortal.Rotator();
+      Rot.Yaw += 180;
+      ReversePortal.SetRotation(FQuat(Rot));
+      //set linkedportal's scene capture component transform relative to linkedportal to be the same as the transform between the active camera and the back of the portal-to-enter
+      //this makes the portal effect work in 3d, instead of just keeping the camera at the exit of the portal, which would make the effect look flat  
+      LinkedSceneCapture->SetRelativeTransform(UKismetMathLibrary::MakeRelativeTransform(PlayerCam->GetComponentTransform(),ReversePortal));
+      //having the camera be behind the portal, however, means we need to move it's clipping plane forward to make sure it isn't rendering objects between it and it's portal,
+      //we dont want to player to see those as it breaks the effect.
+      //these numbers probably need tweaking still but it's close to where i want it to be 
+      LinkedSceneCapture->ClipPlaneNormal = LinkedPortal->GetActorForwardVector();
+      LinkedSceneCapture->ClipPlaneBase = LinkedPortal->GetActorLocation() - (LinkedSceneCapture->ClipPlaneNormal * ClipBuffer);
+    }
+  }
+
+  void APortalActor::TeleportActor(AActor* TargetActor)
+  {
+    TargetActor->SetActorLocation(PortalUtils::ConvertLocationToLocalSpace(TargetActor->GetActorLocation(), this, LinkedPortal));
+    FRotator Rot =  PortalUtils::ConvertRotationToLocalSpace(TargetActor->GetActorRotation(), this, LinkedPortal);
+    Rot.Yaw += 180.0f;
+    TargetActor->SetActorRotation(Rot);
+    if(TargetActor->IsA(ACharacter::StaticClass()))
+    {
+      Rot.Pitch = 0.0f;
+      Rot.Roll = 0.0f;
+      const ACharacter* c = static_cast<ACharacter*>(TargetActor);
+      c->GetController()->SetControlRotation(Rot);
+    }
+
+  //reapply velocity in portal direction
+  const FVector TeleportVelocity = TargetActor->GetVelocity();
+  FVector OrientedVelocity;
+  OrientedVelocity.X = FVector::DotProduct(TeleportVelocity, GetActorForwardVector());
+  OrientedVelocity.Y = FVector::DotProduct(TeleportVelocity, GetActorRightVector());
+  OrientedVelocity.Z = FVector::DotProduct(TeleportVelocity, GetActorUpVector());
+  OrientedVelocity = OrientedVelocity.X * LinkedPortal->GetActorForwardVector() + OrientedVelocity.Y * LinkedPortal->GetActorRightVector() + OrientedVelocity.Z * LinkedPortal->GetActorUpVector();
+
+  TargetActor->GetRootComponent()->ComponentVelocity = OrientedVelocity;
+  LinkedPortal->IsLastPositionInFrontOfPortal = false;
+  LinkedPortal->UpdateSceneCaptureRenderTarget();
+}
+
+FVector PortalUtils::ConvertLocationToLocalSpace(FVector Location, AActor* CurrentSpace, AActor* TargetSpace)
+{
+  if (CurrentSpace == nullptr || TargetSpace == nullptr)
+  {
+    return FVector::ZeroVector;
+  }
+  const FVector Direction = Location - CurrentSpace->GetActorLocation();
+  FVector Dots;
+  Dots.X = FVector::DotProduct(Direction, CurrentSpace->GetActorForwardVector());
+  Dots.Y = FVector::DotProduct(Direction, CurrentSpace->GetActorRightVector());
+  Dots.Z = FVector::DotProduct(Direction, CurrentSpace->GetActorUpVector());
+
+  FVector NewDirection = Dots.X * TargetSpace->GetActorForwardVector() + Dots.Y * TargetSpace->GetActorRightVector() + Dots.Z * TargetSpace->GetActorUpVector();
+  NewDirection.Y *= -1;
+  return TargetSpace->GetActorLocation() + NewDirection;
+}
+
+FRotator PortalUtils::ConvertRotationToLocalSpace(FRotator Rotation, AActor* CurrentSpace, AActor* TargetSpace)
+{
+  if (CurrentSpace == nullptr || TargetSpace == nullptr)
+  {
+    return FRotator::ZeroRotator;
+  }
+
+  FQuat TargetRotation = TargetSpace->GetTransform().GetRotation();
+  FQuat InverseSpaceRotation = CurrentSpace->GetTransform().GetRotation().Inverse();
+  FQuat RotQuat = FQuat(Rotation);
+  FQuat FinalQuat = TargetRotation * InverseSpaceRotation * RotQuat;
+  FRotator ReturnRot = FinalQuat.Rotator();
+  return ReturnRot;
+}
+              </code></pre>
+            </div>
+
+<!--------------------------------------------------------------------------------------------------------------- -->
+<div id="BoidContent" class="tabContent">
+  <div class="xlarge lightweight">Boid ECS Engine</div>
+  <div class="medium lightweight infobar">
+    <div><span class="regularweight">Project: </span>OpenGL Boids</div>
+    <div><span class="regularweight">Role: </span>Engine Programmer</div>
+    <div><span class="regularweight">Engine: </span>Custom</div>
+    <div><span class="regularweight">Year: </span>2022</div>
+  </div>
+        <p class = "medium">Boids implementation within a custom C++ engine created using OpenGL, GLAD, GLFW and Dear ImGui. The engine makes use of a custom Entity-Component system to handle object behaviours.</p>
+        
         </div>
-
       </div>
-
     </div>
+  </div>
+</div>
 
     <!--------------------------------------------------------------------------------------------------------------- -->
     <script>
