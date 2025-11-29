@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, width=device-width" />
+  <link rel="stylesheet" href="./global.css" />
+  <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="pckg/prism.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap" />
+</head>
+
+<body>
+
+  <div class="landingpage">
+
+    <div class="xlarge header">
+      <div class="lightweight">Hi, I’m <span class="highlight regularweight">Zac.</span> Let's make games.</div>
+
+      <div class="medium">
+        <span class="regularweight">First-Class</span> Graduate in Games Programming<br>
+        <span class="regularweight">TIGA</span> Outstanding Programming Graduate '23
+      </div>
+    </div>
+
+    <div class="content">
+
+      <div class="NavContentContainer">
+        <div class="NavigationContainer">
+          <button class="tabLink" onClick="changeTab('AboutContent', this)">
+            <div class="lightweight" id="defaultOpen">About Me</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('StitchedUpContent', this)">
+            <div class="lightweight">Stitched Up</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('IRPContent', this)">
+            <div class="lightweight">Card Game Tool</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('ShaderContent', this)">
+            <div class="lightweight">Shader Diorama</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('RollbackContent', this)">
+            <div class="lightweight">Rollback Netcode</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('PortalContent', this)">
+            <div class="lightweight">UE4 Portals</div>
+          </button>
+          <button class="tabLink" onclick="changeTab('BoidContent', this)">
+            <div class="lightweight">Boid Engine</div>
+          </button>
+        </div>
+
+        <div class="TabContentContainer">
+          <div class="profile">
+            <img class="hslayout-icon" alt="" src="./static/img/hslayout@2x.png" />
+
+            <div class="icons">
+              <!--<a href="https://twitter.com/zacpeelyates" target="_blank">-->
+              <img class="icon" alt="twitter" src="./static/img/twt.svg" id="twtImage" />
+
+              <!--<a href="https://github.com/zacpeelyates" target="_blank">-->
+              <img class="icon" alt="github" src="./static/img/git.svg" id="gitImage" />
+
+              <!--<a href="https://linkedin.com/in/zac-peel-yates" target="_blank">-->
+              <img class="icon" alt="linkedin" src="./static/img/lnk.svg" id="lnkImage" />
+
+              <!--<a href="https://www.youtube.com/@zacpeel-yates7276" target="_blank">-->
+              <img class="icon" alt="youtube" src="./static/img/yt.svg" id="ytImage" />
+            </div>
+            <div class="buttons">
+              <!--<a href="mailto:zacpeelyates@gmail.com" target="_blank">-->
+              <button class="profile-button" id="contactButton">
+                <div class="buttontext">contact</div>
+              </button>
+              <!--<a href="./static/pdf/cv.pdf" target="_blank">-->
+              <button class="profile-button" id="cvButton">
+                <div class="buttontext">résumé</div>
+
+              </button>
+            </div>
+          </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
+
+          <div id="AboutContent" class="tabContent">
+            <div class="xlarge lightweight">About Me</div>
+            <p class="medium" style="line-height: 130%">Graduate games programmer, currently based in <span
+                class="highlight"> Bristol, England. </span><br>
+              Passionate about games as a competitor and developer. <br>
+              Specialized in building and understanding tools and systems. <br>
+              Always looking to improve and develop myself, as well as the games I work on. <br>
+            </p>
+            <p class="medium">Looking for opportunities to acquire industry experience, gain new skills, and refine
+              existing competencies.
+              <br>5+ years of experience with Unity as a hobbyist and student, with a focus on gameplay programming and
+              tools development.
+              <br>Currently in the process of relearning Unreal Engine, and also delving into Godot for the first time.
+            </p>
+            <p class="medium">This page currently contains only projects I am most proud of, ordered by recency.
+              <br>To view my other projects, please see my <span id="gitLink" class="highlightG"
+                style="cursor: pointer;">github profile.</span><br>Click the header of each section to access the
+              corresponding repository.
+            </p>
+          </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
+          <div id="StitchedUpContent" class="tabContent">
+            <span class="clickableHeader" id="stitchedUpLink">Stitched Up</span>
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Title: </span>Stitched Up</div>
+              <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Year: </span>2023</div>
+            </div>
+            <div class="medium">
+              <p>Developed in a team of six for our final assignment at university, 'Stitched Up' is a party game where
+                players are tasked with creating and defending their territory in a chaotic battle between souped-up
+                sewing karts.
+              </p>
+
+              <div class="ytContainer">
+                <iframe src="https://www.youtube.com/embed/7h2o6eY-vkk?enablejsapi=1"
+                  title="Stitched Up! -- COMX 2023 Trailer" frameborder="0"
+                  allow=" accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen></iframe>
+              </div>
+
+              <p>As the lead gameplay programmer for the project, I created the vehicle physics alongside other core
+                gameplay systems such as input handling, powerups, and combat mechanics.</p>
+              <div style="display: flex; gap: 20px;" class="sample-container">
+                <pre class="codePreview" style="line-height: 10%;"><code class="language-csharp" style="font-size: x-small;">public static void SuspensionForce(Transform wheel, RaycastHit[] hits, 
+                                      CarSettings settings, Rigidbody rb)
+{
+  float velocity = Vector3.Dot(rb.GetPointVelocity(wheel.position), wheel.up);
+  float maxDistance = hits.Max(hit => hit.distance);
+  foreach (RaycastHit hit in hits)
+  {
+      //Spring Compression
+      float offset = settings.SuspensionRestLength - (hit.distance - settings.RayVerticalOffset);
+
+      //Suspension Force = offset * strength  -  upward vel * dampning    
+      float force = (offset * settings.SuspensionStiffness) - (velocity * settings.SuspensionDamping);
+      force /= hits.Count(); //Average out force on wheel across all hits 
+
+      //Apply force to vertical axis, ignoring mass
+      Vector3 result = force * Vector3.Dot(wheel.up, hit.normal) * wheel.up;
+      rb.AddForceAtPosition(result, wheel.position, ForceMode.Acceleration);
+  }
+}
+
+
+public static void ResistanceForce(Transform wheel, Vector3 axis, 
+                          float damp, float scalar, Rigidbody rb)
+{
+  //Used for drifting and braking 
+  //Get velocity along axis (right for drift, forward for brake)
+  float velocity = Vector3.Dot(rb.GetPointVelocity(wheel.position), axis);
+
+  //resistance accel (applied in the opposite direction and damped)
+  //scaled by TireMass for drift, BrakeStrength for brake
+  float resistance = -velocity * scalar * damp / Time.fixedDeltaTime;
+
+  //Apply force to axis
+  Vector3 result = resistance * axis;
+  rb.AddForceAtPosition(result, wheel.position);
+}
+
+
+public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL_INDEX index,
+                                                         CarSettings settings, Rigidbody rb)
+{
+  if (input == 0) return; //early out
+  bool drive = false; //can this wheel produce a driving force?
+  if (settings.FrontWheelDrive && (index == CarDataTypes.WHEEL_INDEX.FRONT_LEFT || 
+    index == CarDataTypes.WHEEL_INDEX.FRONT_RIGHT)) drive = true;
+  else if (settings.RearWheelDrive && (index == CarDataTypes.WHEEL_INDEX.BACK_LEFT || 
+    index == CarDataTypes.WHEEL_INDEX.BACK_RIGHT)) drive = true;
+  if (!drive) return; //if not, return
+
+  //velocity of car applied to wheel
+  float velocity = Vector3.Dot(wheel.forward, rb.velocity); 
+
+  //are we trying to change direction? 
+  bool changingDirection = Mathf.Sign(velocity) != Mathf.Sign(input); 
+  float max = input > 0 ? settings.MaxSpeed : settings.MaxSpeedReverse;
+
+  //If we are changing direction, apply resistance force
+  if (changingDirection) ResistanceForce(wheel, wheel.forward, 
+                          settings.TireGrip, settings.BrakeStrength, rb); 
+  float normalVel = Mathf.Clamp01(Mathf.Abs(velocity) / max);
+
+  //How much torque is available? 
+  float torque = normalVel == 1 ? 1 : settings.AccelCurve.Evaluate(normalVel); 
+
+  //resulting force
+  Vector3 result = torque * input * wheel.forward;
+
+  //dampen result based on velocity
+  float dampening = 1 - Mathf.Clamp01(Mathf.InverseLerp(max * (1 - settings.AccelDampen),
+                                                               max, Mathf.Abs(velocity))); 
+  
+  //Apply as accel to ignore mass
+  rb.AddForceAtPosition(dampening * settings.Acceleration * result, wheel.position, 
+                                                            ForceMode.Acceleration); 
+}</code></pre>
+                <video src="static/vid/car.mp4" autoplay loop muted class="previewVideo"></video>
+              </div>
+              <p class="medium">This project was showcased at COMX 2023, where it was played by members of the
+                public.<br>Seeing others play our game and enjoy the mechanics and systems I created was a great
+                experience.
+              <div style="display: flex; gap: 20px;">
+                <img src="static/img/comx.jpg" style="margin-top: 10px; max-width: 45%;">
+                <img src="static/img/comx5.jpg" style="margin-top: 10px; max-width: 45%;"></p>
+              </div>
+            </div>
+          </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
+          <div id="IRPContent" class="tabContent">
+            <span class="clickableHeader" id="repoIRP">Card Game Visual Scripting</span>
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Project: </span>Individual Research</div>
+              <div><span class="regularweight">Role: </span>Tools Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Year: </span>2023</div>
+            </div>
+
+            <p class="medium">For my final individual university project, I developed a bespoke visual scripting
+              solution for implementing card effects in digital card games.
+              This included developing a custom node editor using Unity's GraphView package and UI Builder, as well as
+              the logic to interpret the graphs and execute effects in-game with events.
+            </p>
+
+            <div class="sample-container" style="display: flex; gap: 50px; margin-left: 50px; margin-right: 50px;">
+              <pre class="codePreview" style="line-height: 10%; max-height: auto;"><code class="language-csharp" style="font-size: x-small;">
+public void Populate(CardEffectTree effectTree)
+{
+    if (effectTree == null) return;
+    ClearElements();
+    CurrentTree = effectTree;
+    if (effectTree.nodes == null || !effectTree.nodes.Any()) return;
+
+    //Instantiate all nodes 
+    foreach (CardEffectNode node in effectTree.nodes)
+    {
+        VisualNode n = new(node, this);
+        AddElement(n);
+        n.UpdateDescription();
+    }
+
+    //Connect parents to children 
+    foreach (CardEffectNode parent in effectTree.nodes)
+    {
+        if (parent == null) continue;
+        VisualNode visualParent = GetVisualFromData(parent);
+        foreach (CardEffectNode child in parent.GetChildren())
+        {
+            if (child == null) continue;
+            child.parent = parent;
+            VisualNode visualChild = GetVisualFromData(child);
+            AddElement(visualParent.outputPort.ConnectTo(visualChild.inputPort));
+        }
+    }
+}
+
+private GraphViewChange OnGraphViewChanged(GraphViewChange graphViewChange)
+{
+    //Remove Elements
+    if (graphViewChange.elementsToRemove != null)
+        foreach (GraphElement ge in graphViewChange.elementsToRemove)
+            if (ge is VisualNode visualNode)
+            {
+                CurrentTree.RemoveNode(visualNode.data);
+            }
+            else if (ge is Edge edge && edge.output.node is VisualNode parent &&
+                      edge.input.node is VisualNode child)
+            {
+                Undo.RecordObject(parent.data, "Remove Child");
+                parent.data.Remove(child.data);
+                child.data.parent = null;
+                EditorUtility.SetDirty(parent.data);
+            }
+
+    //Add Elements
+    if (graphViewChange.edgesToCreate != null)
+        foreach (Edge edge in graphViewChange.edgesToCreate)
+            if (edge.output.node is VisualNode parent && edge.input.node is VisualNode child)
+            {
+                Undo.RecordObject(parent.data, "Add Child");
+                parent.data.Add(child.data);
+                child.data.parent = parent.data;
+                EditorUtility.SetDirty(parent.data);
+            }
+
+    //Moved Elements
+    if (graphViewChange.movedElements != null) CurrentTree.SortTreeByNodeGraphPosition();
+
+    //Events
+    OnGraphViewChange?.Invoke();
+    CurrentTree.HandleKeywordData();
+    return graphViewChange;
+}
+
+public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+{
+    if (CurrentTree == null) return;
+    TypeCache.TypeCollection types = TypeCache.GetTypesDerivedFrom&lt;CardEffectNode>();
+    foreach (Type type in types)
+    {
+        if (type.IsAbstract) continue; //Don't instantiate abstract types 
+        evt.menu.AppendAction($"{type.BaseType?.Name}/{type.Name}", //create right click menu
+            _ =>  //invoke method when item selected 
+            {
+                MethodInfo method = CreateNodeMethodInfo.MakeGenericMethod(type);
+                method.Invoke(this, null);
+            });
+    }
+}
+
+//reflection method info 
+private static readonly MethodInfo CreateNodeMethodInfo =
+    typeof(CardEffectGraphView).GetMethod("CreateNode", BindingFlags.NonPublic | BindingFlags.Instance);
+
+//method that gets invoked with the generic type of selected node
+private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
+{
+    NodeType node = CurrentTree.CreateNode&lt;NodeType>();
+    if (node == null) return;
+    AddElement(new VisualNode(node, this));
+}</code></pre>
+              <img src="static/img/irpcontextmenu.png" style="max-width: 50%; max-height: auto;"></img>
+            </div>
+
+            <div style="position: relative; width: 100%; height: 0; padding-top: 70%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+              <iframe loading="lazy"
+                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFjFRBTycM&#x2F;view?embed"
+                allowfullscreen="allowfullscreen" allow="fullscreen">
+              </iframe>
+            </div>
+
+          </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
+          <div id="RollbackContent" class="tabContent">
+            <span class="clickableHeader" id="repoRollback">Rollback Netcode</span>
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Project: </span>Game Engine Programming</div>
+              <div><span class="regularweight">Role: </span>Network Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Year: </span>2022</div>
+
+            </div>
+            <p class="medium">This project is a favourite of mine that I am extremely proud of.
+              <br>An explanation, implementation & demonstration of Rollback Networking within Unity.
+              <br><br>The video has had overwhelmingly positive feedback from people looking for resources on the
+              topic, and I earned 100/100 marks on the assignment.
+              I'm a huge fan of fighting games and rollback has revolutionized the way they are played online.
+            </p>
+            <div class="ytContainer">
+              <iframe src="https://www.youtube.com/embed/lCfouAH_N5w?si=ysLsLZH2H0Qpy8ad?enablejsapi=1"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+            </div>
+          </div>
+
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
+          <div id="ShaderContent" class="tabContent">
+            <span class="clickableHeader" id="repoShader">HDRP Shader Diorama</span>
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Project: </span>Shader Programming</div>
+              <div><span class="regularweight">Role: </span>Graphics Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unity HDRP (HLSL)</div>
+              <div><span class="regularweight">Year: </span>2023</div>
+
+            </div>
+
+            <p class="medium">Below are the slides from a university presentation created for the graphics programming
+              module, developed in Unity's HD Render Pipline.
+              The project contains effects created in HLSL and Shadergraph, with code samples included alongside the
+              visuals in the presentation.
+              <br>In the future I would like to explore graphics programming further, including the use of Compute
+              Shaders.
+            </p>
+
+            <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+ padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+ border-radius: 8px; will-change: transform;">
+              <iframe loading="lazy"
+                style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAFXFVPS3gg&#x2F;view?embed"
+                allowfullscreen="allowfullscreen" allow="fullscreen">
+              </iframe>
+            </div>
+          </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
+          <div id="PortalContent" class="tabContent">
+            <div class="clickableHeader" id="repoPortal">Portal Rendering</div>
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Title: </span>Unreal Mechanics Showcase</div>
+              <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
+              <div><span class="regularweight">Engine: </span>Unreal (C++)</div>
+              <div><span class="regularweight">Year: </span>2022</div>
+            </div>
+
+            <p class="medium">As part of an Unreal Engine 4 mechanics showcase, I created a custom portal system
+              alongside a character controller. The portals make use of render textures and a lot of math to create an
+              illusion of a portal. They can handle both the player and interactable objects travelling through them.
+            </p>
+            <div class="sample-container" style="display: flex; gap: 20px;">
+              <pre class="codePreview" style="line-height: 10%; max-width: 50%; max-height: 340px;"><code class="language-cpp" style="font-size: x-small;">
+void APortalManager::UpdatePortalView(APortalActor* Portal)
+{
+  Portal->GetSceneCaptureComponent()->Activate();
+  APortalActor* LinkedPortal = Portal->GetLinkedPortal();
+    if (LinkedPortal != nullptr)
+    {
+    
+      const UCameraComponent* PlayerCam = PlayerCon->CameraPawn->GetActiveCamera();
+      USceneCaptureComponent2D* LinkedSceneCapture = LinkedPortal->GetSceneCaptureComponent();
+      LinkedSceneCapture->Activate();
+
+      //get back-facing transform of the portal-to-enter
+      FTransform ReversePortal = Portal->GetActorTransform();
+      FRotator Rot = ReversePortal.Rotator();
+      Rot.Yaw += 180;
+      ReversePortal.SetRotation(FQuat(Rot));
+      //set linkedportal's scene capture component transform relative to linkedportal to be the same as the transform between the active camera and the back of the portal-to-enter
+      //this makes the portal effect work in 3d, instead of just keeping the camera at the exit of the portal, which would make the effect look flat  
+      LinkedSceneCapture->SetRelativeTransform(UKismetMathLibrary::MakeRelativeTransform(PlayerCam->GetComponentTransform(),ReversePortal));
+      //having the camera be behind the portal, however, means we need to move it's clipping plane forward to make sure it isn't rendering objects between it and it's portal,
+      //we dont want to player to see those as it breaks the effect.
+      //these numbers probably need tweaking still but it's close to where i want it to be 
+      LinkedSceneCapture->ClipPlaneNormal = LinkedPortal->GetActorForwardVector();
+      LinkedSceneCapture->ClipPlaneBase = LinkedPortal->GetActorLocation() - (LinkedSceneCapture->ClipPlaneNormal * ClipBuffer);
+    }
+  }
+
+  void APortalActor::TeleportActor(AActor* TargetActor)
+  {
+    TargetActor->SetActorLocation(PortalUtils::ConvertLocationToLocalSpace(TargetActor->GetActorLocation(), this, LinkedPortal));
+    FRotator Rot =  PortalUtils::ConvertRotationToLocalSpace(TargetActor->GetActorRotation(), this, LinkedPortal);
+    Rot.Yaw += 180.0f;
+    TargetActor->SetActorRotation(Rot);
+    if(TargetActor->IsA(ACharacter::StaticClass()))
+    {
+      Rot.Pitch = 0.0f;
+      Rot.Roll = 0.0f;
+      const ACharacter* c = static_cast&lt;ACharacter*>(TargetActor);
+      c->GetController()->SetControlRotation(Rot);
+    }
+
+  //reapply velocity in portal direction
+  const FVector TeleportVelocity = TargetActor->GetVelocity();
+  FVector OrientedVelocity;
+  OrientedVelocity.X = FVector::DotProduct(TeleportVelocity, GetActorForwardVector());
+  OrientedVelocity.Y = FVector::DotProduct(TeleportVelocity, GetActorRightVector());
+  OrientedVelocity.Z = FVector::DotProduct(TeleportVelocity, GetActorUpVector());
+  OrientedVelocity = OrientedVelocity.X * LinkedPortal->GetActorForwardVector() + OrientedVelocity.Y * LinkedPortal->GetActorRightVector() + OrientedVelocity.Z * LinkedPortal->GetActorUpVector();
+
+  TargetActor->GetRootComponent()->ComponentVelocity = OrientedVelocity;
+  LinkedPortal->IsLastPositionInFrontOfPortal = false;
+  LinkedPortal->UpdateSceneCaptureRenderTarget();
+}
+
+FVector PortalUtils::ConvertLocationToLocalSpace(FVector Location, AActor* CurrentSpace, AActor* TargetSpace)
+{
+  if (CurrentSpace == nullptr || TargetSpace == nullptr)
+  {
+    return FVector::ZeroVector;
+  }
+  const FVector Direction = Location - CurrentSpace->GetActorLocation();
+  FVector Dots;
+  Dots.X = FVector::DotProduct(Direction, CurrentSpace->GetActorForwardVector());
+  Dots.Y = FVector::DotProduct(Direction, CurrentSpace->GetActorRightVector());
+  Dots.Z = FVector::DotProduct(Direction, CurrentSpace->GetActorUpVector());
+
+  FVector NewDirection = Dots.X * TargetSpace->GetActorForwardVector() + Dots.Y * TargetSpace->GetActorRightVector() + Dots.Z * TargetSpace->GetActorUpVector();
+  NewDirection.Y *= -1;
+  return TargetSpace->GetActorLocation() + NewDirection;
+}
+
+FRotator PortalUtils::ConvertRotationToLocalSpace(FRotator Rotation, AActor* CurrentSpace, AActor* TargetSpace)
+{
+  if (CurrentSpace == nullptr || TargetSpace == nullptr)
+  {
+    return FRotator::ZeroRotator;
+  }
+
+  FQuat TargetRotation = TargetSpace->GetTransform().GetRotation();
+  FQuat InverseSpaceRotation = CurrentSpace->GetTransform().GetRotation().Inverse();
+  FQuat RotQuat = FQuat(Rotation);
+  FQuat FinalQuat = TargetRotation * InverseSpaceRotation * RotQuat;
+  FRotator ReturnRot = FinalQuat.Rotator();
+  return ReturnRot;
+}
+              </code></pre>
+
+              <video src="static/vid/portal.mp4" autoplay loop muted class="previewVideo"
+                style="max-width: 50%;"></video>
+            </div>
+          </div>
+
+          <!--------------------------------------------------------------------------------------------------------------- -->
+          <div id="BoidContent" class="tabContent">
+            <div class="clickableHeader" id="repoBoids">Boid ECS Engine</div>
+            <div class="medium lightweight infobar">
+              <div><span class="regularweight">Project: </span>OpenGL Boids</div>
+              <div><span class="regularweight">Role: </span>Engine Programmer</div>
+              <div><span class="regularweight">Engine: </span>Custom</div>
+              <div><span class="regularweight">Year: </span>2022</div>
+            </div>
+            <p class="medium">Boids implementation within a custom C++ engine created using OpenGL, GLAD, GLFW and
+              Dear
+              ImGui. The engine makes use of a custom Entity-Component system to handle object behaviours, and is
+              optimized using Binary Space Partitioning.</p>
+            <div class="sample-container" style="display: flex; gap: 20px;">
+              <pre class="codePreview" style="line-height: 10%; max-width: 50%; max-height: 340px;"><code class="language-cpp" style="font-size: x-small;">
+auto Flock::CalculateForce(Transform* a_transform, std::vector<GameObject*>* a_neighbourPointer) -> glm::vec3
+{
+  if (a_neighbourPointer == nullptr) return glm::vec3(0); //early out
+  unsigned int neighbourCount = 0;
+  glm::vec3 localPos = a_transform->GetRow(POS_VEC);
+  glm::vec3 fwdVec = a_transform->GetRow(FWD_VEC);
+
+  glm::vec3 seperation(0);
+  glm::vec3 alignment(0);
+  glm::vec3 cohesion(0);
+
+  for (GameObject* other : *a_neighbourPointer)
+  {
+      Transform* otherT = other->GetComponent&lt;Transform>().get();
+      if (otherT == a_transform)
+      {
+        continue; //we are looking at ourselves get out early
+      }
+      glm::vec3 otherPos = otherT->GetRow(POS_VEC);
+      glm::vec3 toOther = otherPos - localPos;
+  
+  
+      if (dot(fwdVec, normalize(toOther)) &lt; 0.7F /* look angle */ && length(toOther) &lt; s_neighbourhoodRaidus) 
+      { //boid is in our neighbourhood 
+        
+        neighbourCount++; 
+        seperation +=toOther * -1; //toLocal
+          cohesion +=otherPos; 
+          alignment+=other->GetComponent&lt;BoidBehaviour>()->GetVelocity();
+      }
+  }
+
+  if (neighbourCount == 0)
+  {
+      return glm::vec3(0);
+  }
+
+  for (glm::vec3 v : {seperation, alignment, cohesion})
+  {
+     v /= neighbourCount;
+     if (length(v) != 0.0f)
+     {
+       v = normalize(v);
+     }
+  }
+  return seperation + alignment + cohesion; //total our forces
+}
+            </pre></code>
+              <video src="static/vid/boids.mp4" autoplay loop muted class="previewVideo"
+                style="max-width: 50%;"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--------------------------------------------------------------------------------------------------------------- -->
+    <script>
+      document.getElementById("twtImage").addEventListener("click", function () {
+        window.open("https://twitter.com/zacpeelyates", "_blank");
+      });
+      document.getElementById("gitImage").addEventListener("click", function () {
+        window.open("https://github.com/zacpeelyates", "_blank");
+      });
+
+      document.getElementById("gitLink").addEventListener("click", function () {
+        window.open("https://github.com/zacpeelyates", "_blank");
+      });
+
+      document.getElementById("lnkImage").addEventListener("click", function () {
+        window.open("https://linkedin.com/in/zac-peel-yates", "_blank");
+      });
+      document.getElementById("ytImage").addEventListener("click", function () {
+        window.open("https://www.youtube.com/@zacpeel-yates7276", "_blank");
+      });
+
+      document.getElementById("contactButton").addEventListener("click", function () {
+        window.open("mailto:zacpeelyates@gmail.com", "_blank");
+      });
+
+      document.getElementById("cvButton").addEventListener("click", function () {
+        window.open("./static/pdf/cv.pdf", "_blank");
+      });
+
+      document.getElementById("repoRollback").addEventListener("click", function () {
+        window.open("https://github.com/zacpeelyates/unityrollback", "_blank");
+      });
+
+      document.getElementById("repoShader").addEventListener("click", function () {
+        window.open("https://github.com/zacpeelyates/HDRP-Shader-Diorama", "_blank");
+      });
+
+      document.getElementById("repoIRP").addEventListener("click", function () {
+        window.open("https://github.com/zacpeelyates/CCG-Visual-Scripting-Demo", "_blank");
+      });
+
+      document.getElementById("repoPortal").addEventListener("click", function () {
+        window.open("https://github.com/zacpeelyates/unrealmechanics", "_blank");
+      });
+
+      document.getElementById("repoBoids").addEventListener("click", function () {
+        window.open("https://github.com/zacpeelyates/boidengine", "_blank");
+      });
+
+      document.getElementById("stitchedUpLink").addEventListener("click", function () {
+        window.open("https://comx.uogs.co.uk/23/teams/patchwork-games/", "_blank");
+      })
+
+
+
+
+      function PauseAllYoutubeIframes() {
+        var iframes = document.getElementsByTagName("iframe");
+        for (var i = 0; i < iframes.length; i++) {
+          iframes[i].contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+      }
+
+
+      function changeTab(tabName, tabElement) {
+        var i, tabcontent, tablinks, videos;
+        tabcontent = document.getElementsByClassName("tabContent");
+        for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tabLink");
+        PauseAllYoutubeIframes();
+        document.getElementById(tabName).style.display = "block";
+      }
+
+      document.getElementById("defaultOpen").click();
+
+    </script>
+
+    <script src="pckg/prism.js"></script>
+
+    <footer style="opacity: 10%; color:whitesmoke; text-align: center; font-size: small;">
+      <p>Built poorly in html/css (I am not a web dev). Code snippets made with PrismJS. © 2023 Zac Peel-Yates. </p>
+    </footer>
+
+</body>
+
+</html>
