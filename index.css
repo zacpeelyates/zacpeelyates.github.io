@@ -26,10 +26,10 @@
   flex-wrap: wrap;
   padding: 1vh;
   margin: 10px;
-  align-items: flex-start;
+  align-items: center;
   z-index: 0;
   height: fit-content;
-  justify-content: space-between;
+  justify-content: center;
   align-content: center;
 }
 
@@ -130,10 +130,11 @@
   font-size: var(--font-size-xlarge);
   font-weight: 300;
   cursor: pointer;
+  color: var(--color-palegreen-100);
 }
 
 .clickableHeader:hover {
-  color: var(--color-palegreen-100);
+  color: var(--color-palegreen-100-hover);
 }
 
 .codePreview {
@@ -173,22 +174,11 @@
   align-items: center;
   flex-direction: column;
   opacity: 80%;
-  transition: box-shadow 1s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
   min-width: 15%;
   max-width: 20%;
   min-height: fit-content;
   max-height: 525px;
 
-}
-
-.profile:hover {
-  box-shadow: 0px 0px 20px 30px var(--color-gray-100) inset;
-  opacity: 100%;
-}
-
-.profile.animate {
-  animation: 0.5s ease-out 0s 1 normal none slide-in-left;
 }
 
 [class*=preview-] {
@@ -200,7 +190,6 @@
   overflow: hidden;
   cursor: pointer;
   border: 3px solid var(--color-gray-100);
-  transition: border-color 0.25s ease-in;
 }
 
 [class*=preview-]:hover {
@@ -248,6 +237,10 @@
 
 .highlightG {
   color: var(--color-palegreen-100);
+}
+
+.highlightG:hover {
+  color: var(--color-palegreen-100-hover);
 }
 
 .NavigationContainer {

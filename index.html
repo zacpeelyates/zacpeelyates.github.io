@@ -14,13 +14,8 @@
 
   <div class="landingpage">
 
-    <div class="xlarge header">
-      <div class="lightweight">Hi, I’m <span class="highlight regularweight">Zac.</span> Let's make games.</div>
-
-      <div class="medium">
-        <span class="regularweight">First-Class</span> Graduate in Games Programming<br>
-        <span class="regularweight">TIGA</span> Outstanding Programming Graduate '23
-      </div>
+    <div class="xlarge header" style="align-self: center;">
+      <div class="lightweight"><span class="highlight regularweight" style="text-align: center;">Zac Peel-Yates</span> | Games Engineer</div>
     </div>
 
     <div class="content">
@@ -43,7 +38,7 @@
             <div class="lightweight">Rollback Netcode</div>
           </button>
           <button class="tabLink" onclick="changeTab('PortalContent', this)">
-            <div class="lightweight">UE4 Portals</div>
+            <div class="lightweight">Unreal Portals</div>
           </button>
           <button class="tabLink" onclick="changeTab('BoidContent', this)">
             <div class="lightweight">Boid Engine</div>
@@ -84,22 +79,17 @@
 
           <div id="AboutContent" class="tabContent">
             <div class="xlarge lightweight">About Me</div>
-            <p class="medium" style="line-height: 130%">Graduate games programmer, currently based in <span
-                class="highlight"> Bristol, England. </span><br>
+            <p class="medium" style="line-height: 130%">Engineer based in <span
+                class="highlight"> Royal Leamington Spa.</span><br>
               Passionate about games as a competitor and developer. <br>
-              Specialized in building and understanding tools and systems. <br>
+              Specialized in building and refining tools and systems. <br>
               Always looking to improve and develop myself, as well as the games I work on. <br>
             </p>
-            <p class="medium">Looking for opportunities to acquire industry experience, gain new skills, and refine
-              existing competencies.
-              <br>5+ years of experience with Unity as a hobbyist and student, with a focus on gameplay programming and
-              tools development.
-              <br>Currently in the process of relearning Unreal Engine, and also delving into Godot for the first time.
+            <p class="medium">Currently working on <span class="highlight">Forza Horizon 6</span> as a Tools & Systems Engineer.
+              <br>2 years experience as a AAA developer.
             </p>
-            <p class="medium">This page currently contains only projects I am most proud of, ordered by recency.
-              <br>To view my other projects, please see my <span id="gitLink" class="highlightG"
-                style="cursor: pointer;">github profile.</span><br>Click the header of each section to access the
-              corresponding repository.
+            <p class="medium">This portfolio contains some personal projects.<br>To view Source Code, check out my <span id="gitLink" class="highlightG"
+                style="cursor: pointer;">Github.</span>
             </p>
           </div>
 
@@ -109,7 +99,7 @@
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Title: </span>Stitched Up</div>
               <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
-              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Tooling: </span>Unity</div>
               <div><span class="regularweight">Year: </span>2023</div>
             </div>
             <div class="medium">
@@ -205,9 +195,8 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
 }</code></pre>
                 <video src="static/vid/car.mp4" autoplay loop muted class="previewVideo"></video>
               </div>
-              <p class="medium">This project was showcased at COMX 2023, where it was played by members of the
-                public.<br>Seeing others play our game and enjoy the mechanics and systems I created was a great
-                experience.
+              <p class="medium">This project was showcased at COMX 2023, where it was enjoyed by members of the
+                public. Maybe I'll get the band back together and finish this someday, it's quite fun!
               <div style="display: flex; gap: 20px;">
                 <img src="static/img/comx.jpg" style="margin-top: 10px; max-width: 45%;">
                 <img src="static/img/comx5.jpg" style="margin-top: 10px; max-width: 45%;"></p>
@@ -220,12 +209,11 @@ public static void LateralForce(Transform wheel, float input, CarDataTypes.WHEEL
             <span class="clickableHeader" id="repoIRP">Card Game Visual Scripting</span>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Project: </span>Individual Research</div>
-              <div><span class="regularweight">Role: </span>Tools Programmer</div>
-              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Engine: </span>Custom Unity Tool</div>
               <div><span class="regularweight">Year: </span>2023</div>
             </div>
 
-            <p class="medium">For my final individual university project, I developed a bespoke visual scripting
+            <p class="medium">Driven by inconsistent card wording in <i>HearthStone</i>, I developed a bespoke visual scripting
               solution for implementing card effects in digital card games.
               This included developing a custom node editor using Unity's GraphView package and UI Builder, as well as
               the logic to interpret the graphs and execute effects in-game with events.
@@ -348,16 +336,15 @@ private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
             <span class="clickableHeader" id="repoRollback">Rollback Netcode</span>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Project: </span>Game Engine Programming</div>
-              <div><span class="regularweight">Role: </span>Network Programmer</div>
-              <div><span class="regularweight">Engine: </span>Unity (C#)</div>
+              <div><span class="regularweight">Tooling: </span>C# .NET</div>
               <div><span class="regularweight">Year: </span>2022</div>
 
             </div>
-            <p class="medium">This project is a favourite of mine that I am extremely proud of.
-              <br>An explanation, implementation & demonstration of Rollback Networking within Unity.
+            <p class="medium">
+              <br>An explanation, implementation & demonstration of Rollback Networking with C#, using Unity as a display engine.
               <br><br>The video has had overwhelmingly positive feedback from people looking for resources on the
-              topic, and I earned 100/100 marks on the assignment.
-              I'm a huge fan of fighting games and rollback has revolutionized the way they are played online.
+              topic, which are unfortunately scarce. 
+              I love fighting games and rollback has revolutionized the way they are played online.
             </p>
             <div class="ytContainer">
               <iframe src="https://www.youtube.com/embed/lCfouAH_N5w?si=ysLsLZH2H0Qpy8ad?enablejsapi=1"
@@ -373,8 +360,7 @@ private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
             <span class="clickableHeader" id="repoShader">HDRP Shader Diorama</span>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Project: </span>Shader Programming</div>
-              <div><span class="regularweight">Role: </span>Graphics Programmer</div>
-              <div><span class="regularweight">Engine: </span>Unity HDRP (HLSL)</div>
+              <div><span class="regularweight">Tooling: </span>Unity</div>
               <div><span class="regularweight">Year: </span>2023</div>
 
             </div>
@@ -403,14 +389,13 @@ private void CreateNode&lt;NodeType>() where NodeType : CardEffectNode
             <div class="clickableHeader" id="repoPortal">Portal Rendering</div>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Title: </span>Unreal Mechanics Showcase</div>
-              <div><span class="regularweight">Role: </span>Gameplay Programmer</div>
-              <div><span class="regularweight">Engine: </span>Unreal (C++)</div>
+              <div><span class="regularweight">Tooling: </span>Unreal</div>
               <div><span class="regularweight">Year: </span>2022</div>
             </div>
 
-            <p class="medium">As part of an Unreal Engine 4 mechanics showcase, I created a custom portal system
-              alongside a character controller. The portals make use of render textures and a lot of math to create an
-              illusion of a portal. They can handle both the player and interactable objects travelling through them.
+            <p class="medium">As part of an Unreal Engine mechanics showcase, I created a custom portal system
+              alongside a character controller. Inspirted by <i>Portal</i> The portals make use of render textures and a lot of math to create the
+              illusion of a portal with depth. They can handle both the player and interactable objects travelling through them.
             </p>
             <div class="sample-container" style="display: flex; gap: 20px;">
               <pre class="codePreview" style="line-height: 10%; max-width: 50%; max-height: 340px;"><code class="language-cpp" style="font-size: x-small;">
@@ -511,8 +496,7 @@ FRotator PortalUtils::ConvertRotationToLocalSpace(FRotator Rotation, AActor* Cur
             <div class="clickableHeader" id="repoBoids">Boid ECS Engine</div>
             <div class="medium lightweight infobar">
               <div><span class="regularweight">Project: </span>OpenGL Boids</div>
-              <div><span class="regularweight">Role: </span>Engine Programmer</div>
-              <div><span class="regularweight">Engine: </span>Custom</div>
+              <div><span class="regularweight">Tooling: </span>Custom C++ ECS</div>
               <div><span class="regularweight">Year: </span>2022</div>
             </div>
             <p class="medium">Boids implementation within a custom C++ engine created using OpenGL, GLAD, GLFW and
